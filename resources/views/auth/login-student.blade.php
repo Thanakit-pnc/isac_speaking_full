@@ -12,33 +12,31 @@
         <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
-
+        <link rel="stylesheet" href="{{ asset('public/css/login.css') }}">
     </head>
 
     <body class="bg-dark">
 
-        <div class="account-pages mt-5 mb-5">
+        <div class="account-pages mt-2 mt-md-5">
             <div class="container">
-                <div class="row justify-content-center mb-3">
-                    <div class="col-md-6 text-center">
-                        <img src="{{ asset('public/assets/images/logo-nc.png') }}" alt="Logo NC" width="150">
-                    </div>
-                </div>
+
                 <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6 col-xl-5">
-                        <div class="card">
-                            <div class="card-header bg-primary text-center p-1">
-                                <h4 class="text-center text-white d-flex justify-content-center align-items-center flex-column flex-sm-row">
-                                    <i class="fas fa-microphone-alt fa-2x mr-2 mb-2 mb-sm-0"></i>
-                                    <span class="font-weight-bold font-20">iSAC Speaking Full Test</span>
-                                </h4>
-                            </div>
-                            <div class="card-body pt-1">
-                                
-                                <div class="text-center w-75 mx-auto">
-                                    <p class="text-muted my-3">Enter your username and password to access <span class="font-weight-bold">iSAC Speaking Full Test</span>.</p>
+                    <div class="col-md-8 col-xl-6">
+
+                        <!-- Simple card -->
+                        <div class="card overflow-hidden">
+                            <div class="image-header">
+                                <img src="{{ asset('public/assets/images/logo-nc.png') }}" alt="" class="img-logo">
+
+                                <div class="middle">
+                                    <span><i class="fas fa-microphone-alt"></i>SAC</span> Speaking Full Test
                                 </div>
 
+                                <div class="button-text">
+                                    <h3 class="text-white">Sign In to access.</h3>
+                                </div>
+                            </div>
+                            <div class="card-body">
                                 @if(session('msg'))
                                     <div class="alert alert-danger alert-dismissible bg-danger text-white border-0 fade show" role="alert">
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -72,20 +70,15 @@
                                     </div>
 
                                     <div class="form-group mb-0 mt-4 text-center">
-                                        <button class="btn btn-bordered-primary width-md" type="submit"> Log In </button>
+                                        <button class="btn btn-bordered-primary btn-block" type="submit"> Log In </button>
                                     </div>
 
                                 </form>
-
-                            </div> <!-- end card-body -->
+                            </div>
                         </div>
-                        <!-- end card -->
 
-                    </div> <!-- end col -->
-
-                    
+                    </div>
                 </div>
-                <!-- end row -->
             </div>
             <!-- end container -->
         </div>
