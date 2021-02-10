@@ -16,6 +16,7 @@
         <link href="{{ asset('public/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 
+        @yield('css')
     </head>
 
     <body>
@@ -74,7 +75,7 @@
 
                     <!-- LOGO -->
                     <div class="logo-box">
-                        <a href="index.html" class="logo text-center">
+                        <a href="{{ url('/home') }}" class="logo text-center">
                             <span class="logo-lg text-white d-flex align-items-center">
                                 <i class="fas fa-microphone-alt fa-2x"></i> 
                                 <span class="font-20 font-weight-bold ml-2">iSAC Speaking Full Test</span>
@@ -147,6 +148,7 @@
                 </div>     
                 <!-- end page title --> 
 
+                @yield('content')
                 
             </div> <!-- end container -->
         </div>
@@ -163,5 +165,6 @@
         <!-- App js -->
         <script src="{{ asset('public/assets/js/app.min.js') }}"></script>
         
+        @yield('js')
     </body>
 </html>
