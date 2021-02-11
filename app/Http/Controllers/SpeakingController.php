@@ -9,4 +9,8 @@ class SpeakingController extends Controller
     public function full_test($test) {
         return view('speaking.full-test', ['test' => $test]);
     }
+
+    public function store(Request $request) {
+        dd($request->all());
+    }
 }

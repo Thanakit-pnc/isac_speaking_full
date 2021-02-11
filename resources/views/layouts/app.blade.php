@@ -8,6 +8,7 @@
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.ico') }}">
 
@@ -129,24 +130,7 @@
         <!-- ============================================================== -->
 
         <div class="wrapper">
-            <div class="container-fluid">
-
-                <!-- start page title -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box">
-                            <div class="page-title-right">
-                                <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Minton</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
-                                    <li class="breadcrumb-item active">Starter</li>
-                                </ol>
-                            </div>
-                            <h4 class="page-title">Starter</h4>
-                        </div>
-                    </div>
-                </div>     
-                <!-- end page title --> 
+            <div class="container-fluid mt-3">
 
                 @yield('content')
                 
@@ -160,11 +144,9 @@
 
         <!-- Vendor js -->
         <script src="{{ asset('public/assets/js/vendor.min.js') }}"></script>
-        <!-- init js -->
-        <script src="{{ asset('public/assets/js/pages/dashboard-2.init.js') }}"></script>
+        @yield('js')
         <!-- App js -->
         <script src="{{ asset('public/assets/js/app.min.js') }}"></script>
         
-        @yield('js')
     </body>
 </html>

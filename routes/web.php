@@ -13,8 +13,9 @@ Route::middleware('auth:student')->group(function () {
     });
     Route::get('/home', 'HomeController@index')->name('home.student');
 
-    Route::get('full-test/{test}', 'SpeakingController@full_test')->name('full.test');
+    Route::get('full-test/{part}/{topic}', 'SpeakingController@full_test')->name('full.test');
 
+    Route::post('upload_audio', 'SpeakingController@store')->name('store.audio');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
