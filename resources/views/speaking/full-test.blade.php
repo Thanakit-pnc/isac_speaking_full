@@ -6,6 +6,7 @@
         <div class="card-box">
             <div class="row">
                 <div class="col-12">
+                    <h1 id="test"></h1>
                     <h3 class="m-0 text-right"><i class="fas fa-clock"></i> <span id="min">00</span>:<span id="sec">20</span></h3>
                 </div>
             </div>
@@ -42,4 +43,42 @@
 @section('js')
 <script src="{{ asset('public/js/WebAudioRecorder.min.js') }}"></script>
 <script src="{{ asset('public/js/record.js') }}"></script>
+<script>
+    let timeCount = 3
+    totalTime = timeCount;
+    let blobObj = {};
+    function createDownloadLink(blob) {
+        let url = URL.createObjectURL(blob);
+        recordBox[indexBox].innerHTML = `<audio src="${url}" controlsList="nodownload" controls></audio>`;
+        blobObj[fileName] = blob;
+    }
+    
+    finishBtn.addEventListener('click', () => {
+            let form_data = new FormData();
+            form_data.append('part', 1);
+
+            for(let answer in blobObj) {
+                form_data.append('audio_data[]', blobObj[answer], answer);
+            }
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{ route('store.audio') }}",
+                type: 'POST',
+                data: form_data,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+
+        });
+
+    
+</script>
 @endsection

@@ -3,6 +3,8 @@
 
 Auth::routes();
 
+Route::get('/logout_admin', 'Auth\LoginController@logout_admin')->name('logout.admin');
+
 Route::get('/login-student', 'Auth\LoginStudentController@showLoginForm')->name('login.student');
 Route::post('/login-student', 'Auth\LoginStudentController@login');
 Route::get('/logout', 'Auth\LoginStudentController@logout')->name('logout.student');

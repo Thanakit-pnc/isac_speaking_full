@@ -18,6 +18,8 @@ const secondsEl = document.getElementById('sec');
 let indexBox = 0;
 let fileName;
 
+let totalTime, timer;
+
 recordBtns.forEach((record, index) => {
 	record.addEventListener('click', () => startRecording(index))
 });
@@ -37,22 +39,37 @@ function startRecording(index) {
 			workerDir: "/isac_speaking/public/js/",
 			encoding: fileType,
 			numChannels: 2,
-			onEncoderLoading: function() {
+			onEncoderLoading: function(recorder, encode) {
+				recordBox[indexBox].innerHTML = `
+					<button class="btn btn-dark width-lg" type="button">
+						<span class="spinner-grow spinner-grow-sm mr-1" role="status" aria-hidden="true"></span>
+						Recording...
+					</button>`;
+				$('.record').attr('disabled', true)
 			},
 		});
 
-		recorder.onComplete = function(recorder, blob) { 
+		recorder.setOptions({
+		  timeLimit: totalTime,
+		  encodeAfterRecord: encodeAfterRecord,
+		  mp3: {
+			mimeType: "audio/mpeg",
+			bitRate: 160  
+		  }
+		});
+		
+		recorder.onComplete = function(recorder, blob) {
+			$('.record').attr('disabled', false) 
+			totalTime = timeCount;
 			createDownloadLink(blob, recorder.encoding);
 		}
 
-		recorder.setOptions({
-		  timeLimit: 120,
-		  encodeAfterRecord: encodeAfterRecord,
-	      ogg: {quality: 0.5},
-	      mp3: {bitRate: 160}
-	    });
+		recorder.onError = function(recorder, msg) {
+			console.log(msg);
+		}
 
 		recorder.startRecording();
+
 		startTime();
 	})
 
@@ -60,45 +77,7 @@ function startRecording(index) {
 	fileName = `answer${index+1}`;
 }
 
-function stopRecording() {
-	gumStream.getAudioTracks()[0].stop();
-
-	recorder.finishRecording();
-}
-
-
-function createDownloadLink(blob) {
-	
-    let url = URL.createObjectURL(blob);
-
-    recordBox[indexBox].innerHTML = `<audio src="${url}" controlsList="nodownload" controls></audio>`;
-
-	let form_data = new FormData();
-	form_data.append('audio_data_'+fileName, blob, fileName);
-
-	finishBtn.addEventListener('click', () => {
-		$.ajaxSetup({
-			headers: {
-				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			}
-		});
-		$.ajax({
-			url: "/isac-speaking-full/upload_audio",
-			type: 'POST',
-			data: form_data,
-			processData: false,
-			contentType: false,
-			success: function(data) {
-				// console.log(data);
-			}
-		});
-	});
-}
-
-
 // Count Time
-let totalTime = 3;
-let timer;
 
 function setTime() {
 	totalTime--;
@@ -107,7 +86,6 @@ function setTime() {
     let seconds = totalTime % 60;
 
 	if(totalTime === 0) {
-		stopRecording();
 		stopTime();
 	} 
 	
@@ -118,8 +96,7 @@ function setTime() {
 function startTime() {
 	timer = setInterval(setTime, 1000);
 }
-
+    
 function stopTime() {
-    clearInterval(timer);
-	totalTime = 3;
+	clearInterval(timer);
 }
