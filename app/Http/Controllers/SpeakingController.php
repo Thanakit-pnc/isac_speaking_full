@@ -37,13 +37,21 @@ class SpeakingController extends Controller
         // }
             
         DB::transaction(function () use($request, $folderName, $round) {
-            DB::table('speaking_full')
-                ->insert([
-                    'std_id' => auth('student')->user()->std_id,
-                    'round' => $round,
-                    'part_number' => $request->part,
-                    'part_path' => $folderName,
-                ]);
+
+            Speaking()->create([
+                'std_id' => auth('student')->user()->std_id,
+                'round' => $round,
+                'part' => '1',
+                'topic' => 'topic 1',
+                
+            ]);
+            // DB::table('speaking_full')
+            //     ->insert([
+            //         'std_id' => auth('student')->user()->std_id,
+            //         'round' => $round,
+            //         'part_number' => $request->part,
+            //         'part_path' => $folderName,
+            //     ]);
         });
 
         return response()->json(['msg' => 'Upload Success']);
