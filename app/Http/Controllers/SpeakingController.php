@@ -8,8 +8,15 @@ use DB;
 
 class SpeakingController extends Controller
 {
-    public function full_test($test) {
-        return view('speaking.full-test', ['test' => $test]);
+    public function full_test($part, $topic) {
+
+        $partTitle = $this->formatUrl($part);
+        $topicTitle = $this->formatUrl($topic);
+  
+        return view('speaking.full-test', [
+            'partTitle' => $partTitle,
+            'topicTitle' => $topicTitle,
+        ]);
     }
 
     public function store(Request $request) {
@@ -56,4 +63,13 @@ class SpeakingController extends Controller
 
         return response()->json(['msg' => 'Upload Success']);
     }
+
+    public function formatUrl($string) {
+        
+        preg_match_all('!\D+!', $string, $text);
+        preg_match_all('!\d+!', $string, $number);
+     
+        return title_case($text[0][0].' '.$number[0][0]);
+    }
+
 }

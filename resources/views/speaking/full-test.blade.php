@@ -1,17 +1,36 @@
 @extends('layouts.app')
 
+@section('css')
+    <style>
+        .flex-1 {
+            flex: 1 !important;
+        }
+
+        @media(max-width: 768px) {
+            audio {
+                width: 70%;
+            }
+
+            .rec-container {
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 10px;
+            }
+        }
+
+        @media(max-width: 500px) {
+            audio {
+                width: 100%;
+            }
+        }
+    </style>
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <div class="card-box">
-            <div class="row">
-                <div class="col-12">
-                    <h1 id="test"></h1>
-                    <h3 class="m-0 text-right"><i class="fas fa-clock"></i> <span id="min">00</span>:<span id="sec">20</span></h3>
-                </div>
-            </div>
-
-            <div class="row">
+        <h3 class="text-muted">{{ $partTitle }} <i class="fas fa-angle-right font-16 align-middle"></i> {{ $topicTitle }}</h3>
+        <div class="card-box px-1 px-md-3">
+            <div class="row d-none d-md-flex">
                 <div class="col-6">
                     <h3><i class="fas fa-user-tie"></i> Examiner</h3>
                 </div>
@@ -21,12 +40,13 @@
             </div>
 
             @for ($i = 1; $i <= 8; $i++)
-                <div class="d-flex justify-content-between align-items-center my-3">
-                    <div class="d-flex align-items-center w-50">
-                        <p class="mb-0 mr-3 font-16">{{ $i }}</p>
+                <div class="d-flex justify-content-between flex-column flex-md-row align-items-center my-3 rec-container">
+                    <div class="d-flex justify-content-center align-items-center flex-1 w-100">
+                        <p class="mb-0 mr-2 mr-md-3 font-16 text-dark text-nowrap">Q {{ $i }}:</p>
                         <audio src="#" controls></audio>
                     </div>
-                    <div class="w-50 px-2 show-record">
+                    <div class="d-flex justify-content-center align-items-center flex-1 mt-3 mt-md-0 show-record w-100">
+                        <p class="mb-0 mr-2 mr-md-3 font-16 text-dark text-nowrap">A {{ $i }}:</p>
                         <button class="record btn btn-dark width-lg font-weight-bold"><i class="fas fa-microphone-alt"></i> Record</button>
                     </div>
                 </div>
@@ -49,7 +69,7 @@
     let blobObj = {};
     function createDownloadLink(blob) {
         let url = URL.createObjectURL(blob);
-        recordBox[indexBox].innerHTML = `<audio src="${url}" controlsList="nodownload" controls></audio>`;
+        recordBox[indexBox].innerHTML = `<p class="mb-0 mr-2 mr-md-3 font-16 text-dark text-nowrap">A ${indexBox+1}:</p><audio src="${url}" controlsList="nodownload" controls></audio>`;
         blobObj[fileName] = blob;
     }
     

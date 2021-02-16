@@ -12,9 +12,6 @@ const recordBtns = document.querySelectorAll('.record');
 const recordBox = document.querySelectorAll('.show-record');
 const finishBtn = document.getElementById('finish');
 
-const minutesEl = document.getElementById('min');
-const secondsEl = document.getElementById('sec');
-
 let indexBox = 0;
 let fileName;
 
@@ -41,9 +38,10 @@ function startRecording(index) {
 			numChannels: 2,
 			onEncoderLoading: function(recorder, encode) {
 				recordBox[indexBox].innerHTML = `
-					<button class="btn btn-dark width-lg" type="button">
-						<span class="spinner-grow spinner-grow-sm mr-1" role="status" aria-hidden="true"></span>
-						Recording...
+					<p class="mb-0 mr-2 mr-md-3 font-16 text-dark text-nowrap">A ${indexBox+1}:</p>
+					<button class="btn btn-dark width-lg d-flex justify-content-center align-items-center" type="button">
+						<span class="spinner-grow spinner-grow-sm mr-1 align-middle" role="status" aria-hidden="true"></span>
+						<span id="min">00</span>:<span id="sec">20</span>
 					</button>`;
 				$('.record').attr('disabled', true)
 			},
@@ -67,10 +65,8 @@ function startRecording(index) {
 		recorder.onError = function(recorder, msg) {
 			console.log(msg);
 		}
-
-		recorder.startRecording();
-
 		startTime();
+		recorder.startRecording();
 	})
 
 	indexBox = index;
@@ -78,19 +74,19 @@ function startRecording(index) {
 }
 
 // Count Time
-
 function setTime() {
 	totalTime--;
 
 	let minutes = Math.floor(totalTime / 60);
     let seconds = totalTime % 60;
 
+	$('#min').text(minutes < 10 ? '0'+minutes : minutes);
+	$('#sec').text(seconds < 10 ? '0'+seconds : seconds);
+
 	if(totalTime === 0) {
 		stopTime();
-	} 
-	
-	minutesEl.innerText = `${minutes < 10 ? '0'+minutes : minutes}`; 
-	secondsEl.innerText = `${seconds < 10 ? '0'+seconds : seconds}`; 
+	}
+
 }
 
 function startTime() {
