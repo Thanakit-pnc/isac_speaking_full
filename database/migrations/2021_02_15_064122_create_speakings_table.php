@@ -16,9 +16,10 @@ class CreateSpeakingsTable extends Migration
         Schema::create('speakings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('std_id');
-            $table->integer('round');
             $table->integer('part');
             $table->string('topic');
+            $table->string('expected_score');
+            $table->string('current_course');
             $table->enum('status', ['sent', 'pending', 'success']);
             $table->string('score')->nullable();
             $table->text('fluency_and_coherence')->nullable();

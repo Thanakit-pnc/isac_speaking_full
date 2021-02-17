@@ -12,4 +12,5 @@ class Student extends Authenticatable
     protected $table = 'student';
     protected $primaryKey = 'std_id';
     protected $rememberTokenName = false;
+    
 }

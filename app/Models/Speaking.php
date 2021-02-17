@@ -6,9 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Speaking extends Model
 {
-    protected $table = 'speaking_full';
+    protected $table = 'speakings';
+
+    protected $guarded = [];
+
+    protected $dates = [
+        'due_date', 'th_sent_date'
+    ];
 
     public function student() {
-        return $this->hasOne('App\Student');
+        return $this->hasOne('App\Models\Student', 'std_id', 'std_id');
+    }
+
+    public function sound() {
+        return $this->hasMany('App\Models\Sound');
     }
 }

@@ -2,74 +2,63 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use Carbon\Carbon;
+use App\Models\Sound;
+use App\Models\Speaking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use DB;
 
 class SpeakingController extends Controller
 {
-    public function full_test($part, $topic) {
+    public function part($part, $topic) {
 
-        $partTitle = $this->formatUrl($part);
-        $topicTitle = $this->formatUrl($topic);
-  
-        return view('speaking.full-test', [
-            'partTitle' => $partTitle,
-            'topicTitle' => $topicTitle,
+        $partNum = $this->formatUrl($part);
+        $topicNum = $this->formatUrl($topic);
+
+        return view('part1.index', [
+            'partNum' => $partNum,
+            'topicNum' => $topicNum,
         ]);
     }
 
     public function store(Request $request) {
 
+        
         $sounds = $request->file('audio_data');
-        
-        $check_round = DB::table('speaking_full')
-        ->select('round')
-        ->latest()
-        ->first();
-        
-        if($check_round) {
-            $round = $check_round->round + 1;
-        } else {
-            $round = 1;
-        }
-        
-        $folderName = auth('student')->user()->std_id.'/part'.$request->part.'/round'.$round;
 
-        // foreach($sounds as $sound) {
-        //     $fileName = $sound->getClientOriginalName().'.mp3';
-        //     $sound->storeAs(
-        //             $folderName, $fileName, 'files'
-        //     );
-        // }
-            
-        DB::transaction(function () use($request, $folderName, $round) {
+        $folder = auth('student')->user()->std_id.'/part'.$request->part.'/'.$request->topic.date('_dmYHis');
 
-            Speaking()->create([
+        DB::transaction(function () use($request, $folder, $sounds) {
+
+            $speaking = Speaking::create([
                 'std_id' => auth('student')->user()->std_id,
-                'round' => $round,
-                'part' => '1',
-                'topic' => 'topic 1',
-                
+                'part' => $request->part,
+                'topic' => $request->topic,
+                'status' => 'sent',
+                'due_date' => Carbon::now()->addDays(7)
             ]);
-            // DB::table('speaking_full')
-            //     ->insert([
-            //         'std_id' => auth('student')->user()->std_id,
-            //         'round' => $round,
-            //         'part_number' => $request->part,
-            //         'part_path' => $folderName,
-            //     ]);
+
+            foreach($sounds as $sound) {
+                $fileName = $sound->getClientOriginalName().'.mp3';
+                $sound->storeAs($folder, $fileName, 'files');
+                Sound::create([
+                    'speaking_id' => $speaking->id,
+                    'path' => $folder.'/'.$fileName,
+                    'created_at' => Carbon::now()
+                ]);
+            }
+            
         });
 
         return response()->json(['msg' => 'Upload Success']);
     }
 
     public function formatUrl($string) {
-        
-        preg_match_all('!\D+!', $string, $text);
+                
         preg_match_all('!\d+!', $string, $number);
      
-        return title_case($text[0][0].' '.$number[0][0]);
+        return $number[0][0];
     }
 
 }

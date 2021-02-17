@@ -12,15 +12,26 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.ico') }}">
 
+        <link href="{{ asset('public/assets/libs/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('public/assets/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('public/assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('public/assets/libs/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+
         <!-- App css -->
         <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
-
+        <style>
+            @media (max-width: 991px) {
+                .menubar-dark #topnav .has-submenu.active>a {
+                    color: #3b73da;
+                }
+            }
+        </style>
         @yield('css')
     </head>
 
-    <body>
+    <body class="menubar-dark topbar-light">
 
         <!-- Pre-loader -->
         <div id="preloader">
@@ -42,9 +53,9 @@
                             <!-- Mobile menu toggle-->
                             <a class="navbar-toggle nav-link">
                                 <div class="lines">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
+                                    <span class="bg-dark"></span>
+                                    <span class="bg-dark"></span>
+                                    <span class="bg-dark"></span>
                                 </div>
                             </a>
                             <!-- End mobile menu toggle-->
@@ -76,13 +87,13 @@
 
                     <!-- LOGO -->
                     <div class="logo-box">
-                        <a href="{{ url('/home') }}" class="logo text-center">
-                            <span class="logo-lg text-white d-flex align-items-center">
+                        <a href="{{ route('dashboard') }}" class="logo text-center">
+                            <span class="logo-lg text-dark d-flex align-items-center">
                                 <i class="fas fa-microphone-alt fa-2x"></i> 
-                                <span class="font-20 font-weight-bold ml-2">iSAC Speaking Full Test</span>
+                                <span class="font-20 font-weight-bold ml-2">iSAC Speaking</span>
                             </span>
                             <span class="logo-sm">
-                                <i class="fas fa-microphone-alt text-white fa-2x align-middle"></i>
+                                <i class="fas fa-microphone-alt fa-2x text-dark align-middle"></i>
                             </span>
                         </a>
                     </div>
@@ -99,17 +110,33 @@
                         <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                <a href="#">
-                                    <i class="remixicon-dashboard-line"></i>Dashboards <div class="arrow-down"></div></a>
-                                <ul class="submenu">
-                                    <li>
-                                        <a href="index.html">Dashboard 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="dashboard-2.html">Dashboard 2</a>
-                                    </li>
-                                </ul>
+                                <a href="{{ route('dashboard') }}">
+                                    <i class="mdi mdi-tab-plus"></i>All Speaking 
+                                </a>
                             </li>
+                            <li class="has-submenu">
+                                <a href="{{ route('pending') }}">
+                                    <i class="mdi mdi-tab-minus"></i>Pending
+                                </a>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="{{ route('completed') }}">
+                                    <i class="mdi mdi-tab"></i>Completed
+                                </a>
+                            </li>
+                            
+                            @if (auth()->user()->level == 2)
+                                <li class="has-submenu">
+                                    <a href="#">
+                                        <i class="mdi mdi-lightbulb-on-outline"></i>Report
+                                    </a>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="#">
+                                        <i class="mdi mdi-lightbulb-on-outline"></i>Report All
+                                    </a>
+                                </li>
+                            @endif
 
                         </ul>
                         <!-- End navigation menu -->
@@ -144,6 +171,24 @@
 
         <!-- Vendor js -->
         <script src="{{ asset('public/assets/js/vendor.min.js') }}"></script>
+        <!-- third party js -->
+        <script src="{{ asset('public/assets/libs/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/dataTables.bootstrap4.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/buttons.flash.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/dataTables.keyTable.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/dataTables.select.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/pdfmake/vfs_fonts.js') }}"></script>
+        <!-- third party js ends -->
+
+        <!-- Datatables init -->
+        <script src="{{ asset('public/assets/js/pages/datatables.init.js') }}"></script>
         @yield('js')
         <!-- App js -->
         <script src="{{ asset('public/assets/js/app.min.js') }}"></script>

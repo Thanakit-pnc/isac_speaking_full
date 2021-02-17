@@ -37,12 +37,12 @@ function startRecording(index) {
 			encoding: fileType,
 			numChannels: 2,
 			onEncoderLoading: function(recorder, encode) {
-				recordBox[indexBox].innerHTML = `
-					<p class="mb-0 mr-2 mr-md-3 font-16 text-dark text-nowrap">A ${indexBox+1}:</p>
-					<button class="btn btn-dark width-lg d-flex justify-content-center align-items-center" type="button">
-						<span class="spinner-grow spinner-grow-sm mr-1 align-middle" role="status" aria-hidden="true"></span>
-						<span id="min">00</span>:<span id="sec">20</span>
-					</button>`;
+				recordBtns[indexBox].style.display = 'none';
+				$(recordBox).eq(indexBox).append(`
+				<button class="btn btn-dark width-lg d-flex justify-content-center align-items-center loading" type="button">
+					<span class="spinner-grow spinner-grow-sm mr-1 align-middle" role="status" aria-hidden="true"></span>
+					<span id="min">00</span>:<span id="sec">20</span>
+				</button>`)
 				$('.record').attr('disabled', true)
 			},
 		});
@@ -58,6 +58,7 @@ function startRecording(index) {
 		
 		recorder.onComplete = function(recorder, blob) {
 			$('.record').attr('disabled', false) 
+			$(recordBox).eq(indexBox).find('.loading').remove()
 			totalTime = timeCount;
 			createDownloadLink(blob, recorder.encoding);
 		}
