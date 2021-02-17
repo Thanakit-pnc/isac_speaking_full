@@ -71,6 +71,7 @@
 
 @section('js')
 <script src="{{ asset('public/js/WebAudioRecorder.min.js') }}"></script>
+<script src="{{ asset('public/js/WebAudioRecorderMp3.min.js') }}"></script>
 <script src="{{ asset('public/js/record.js') }}"></script>
 <script>
     let timeCount = 3
