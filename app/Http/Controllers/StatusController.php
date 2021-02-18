@@ -15,6 +15,7 @@ class StatusController extends Controller
                 ->where('std_id', auth('student')->user()->std_id);
 
             return DataTables::eloquent($model)
+                ->addIndexColumn()
                 ->editColumn('part', function (Speaking $speaking) {
 
                     $route = route('status.details', ['id' => $speaking->id]);

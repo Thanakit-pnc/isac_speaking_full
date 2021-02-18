@@ -15,7 +15,7 @@ Route::middleware('auth:student')->group(function () {
     });
     Route::get('/home', 'HomeController@index')->name('home.student');
 
-    Route::get('part{part}/{topic}', 'SpeakingController@part')->name('part1');
+    Route::get('part{part}/{topic}', 'SpeakingController@part')->name('part');
 
     Route::get('/submit/{id}', 'SpeakingController@submit')->name('index.submit');
     Route::post('/submit', 'SpeakingController@store_submit')->name('store.submit');
@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::get('/check/{id}', 'Admin\PendingController@check')->name('comment');
     Route::post('/store_comment', 'Admin\PendingController@store')->name('store.comment');
 
-    Route::get('/completed', 'Admin\CompletedController@index')->name('completed');
+    Route::any('/completed', 'Admin\CompletedController@index')->name('completed');
 
     Route::get('/completed/{id}', 'Admin\CompletedController@view')->name('completed.view');
 });

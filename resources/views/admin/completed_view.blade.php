@@ -13,7 +13,7 @@
                             </div>
                             <div class="d-flex align-items-center mb-3">
                                 <p class="mb-0 mr-2">A {{ $key+1 }}:</p>
-                                <audio src="{{ asset('public/files/'.$sound->path) }}" controls></audio>
+                                <audio class="w-75" src="{{ asset('public/files/'.$sound->path) }}" controls></audio>
                             </div>
                         @endforeach
                     </div>

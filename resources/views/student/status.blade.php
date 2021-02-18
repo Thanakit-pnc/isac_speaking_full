@@ -9,6 +9,7 @@
                 <table class="table table-hover dt-responsive nowrap datatable">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Part / Topic</th>
                             <th>Submitted</th>
                             <th>Teacher</th>
@@ -22,7 +23,6 @@
 @endsection
 
 @section('js')
-
     <script>
         $(document).ready(function() {
             $('.datatable').DataTable({
@@ -30,6 +30,7 @@
                 serverSide: true,
                 ajax: '{{ route("status") }}',
                 columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                     {data: 'part', name: 'speakings.part'},
                     {data: 'created_at', name: 'speakings.created_at'},
                     {data: 'user', name: 'user.name', orderable: false},

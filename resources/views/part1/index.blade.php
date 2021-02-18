@@ -90,7 +90,7 @@
     finishBtn.addEventListener('click', (e) => {
         e.target.disabled = true;
         let form_data = new FormData();
-        form_data.append('part', 1);
+        form_data.append('part', "{{ $partNum }}");
         form_data.append('topic', "{{ $topicNum }}")
 
         for(let answer in blobObj) {

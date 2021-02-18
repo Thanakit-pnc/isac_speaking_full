@@ -30,7 +30,7 @@
                     <h4>Please select a topic</h4>
                     <p class="text-muted">Each topic will deduct one point from your account</p>
                     @for ($i = 1; $i <= 5; $i++) 
-                        <a href="{{ route('part1', ['part' => '1', 'topic' => 'topic'.$i]) }}"
+                        <a href="{{ route('part', ['part' => '1', 'topic' => 'topic'.$i]) }}"
                         type="button" class="btn btn-bordered-primary waves-effect waves-light m-1">Topic
                         {{ $i < 10 ? '0'.$i : $i }}</a>
                     @endfor
@@ -47,7 +47,7 @@
                     <h4>Please select a topic</h4>
                     <p class="text-muted">Each topic will deduct one point from your account</p>
                     @for ($i = 1; $i <= 5; $i++) 
-                        <button type="button" class="btn btn-bordered-primary waves-effect waves-light m-1">Topic {{ $i < 10 ? '0'.$i : $i }}</button>
+                        <a href="{{ route('part', ['part' => '3', 'topic' => 'topic'.$i]) }}" type="button" class="btn btn-bordered-primary waves-effect waves-light m-1">Topic {{ $i < 10 ? '0'.$i : $i }}</a>
                     @endfor
                 </div>
             </div>

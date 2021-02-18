@@ -36,8 +36,8 @@
                         </div>
 
                         <div class="d-flex align-items-center d-flex justify-content-between">
-                            <h5>NC Band Score : <span class="badge badge-pill badge-primary">{{ $speakings->score }}</span></h5>
-                            <h5>Expected Score : <span class="badge badge-pill badge-warning">{{ $speakings->expected_score }}</span></h5>
+                            <h5>NC Band Score : <span class="badge badge-pill badge-primary font-14">{{ $speakings->score }}</span></h5>
+                            <h5>Expected Score : <span class="badge badge-pill badge-warning font-14">{{ $speakings->expected_score }}</span></h5>
                         </div>
 
                         <div class="border-bottom">
