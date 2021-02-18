@@ -12,11 +12,24 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('public/assets/images/favicon.ico') }}">
 
+        <link href="{{ asset('public/assets/libs/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('public/assets/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('public/assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('public/assets/libs/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+
         <!-- App css -->
         <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
+        <style>
+            .wrapper {
+                padding-top: 100px;
+            }
 
+            audio {
+                outline: 0;
+            }
+        </style>
         @yield('css')
     </head>
 
@@ -39,18 +52,6 @@
                     <ul class="list-unstyled topnav-menu float-right mb-0">
 
                         <li class="dropdown notification-list">
-                            <!-- Mobile menu toggle-->
-                            <a class="navbar-toggle nav-link">
-                                <div class="lines">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </a>
-                            <!-- End mobile menu toggle-->
-                        </li>
-
-                        <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <img src="{{ asset('public/assets/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
                                 <span class="pro-user-name ml-1 text-capitalize">
@@ -62,6 +63,11 @@
                                 <div class="dropdown-header noti-title">
                                     <h6 class="text-overflow m-0">Welcome !</h6>
                                 </div>
+
+                                <a href="{{ route('status') }}" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-history"></i>
+                                    <span>Status</span>
+                                </a>
 
                                 <!-- item-->
                                 <a href="{{ route('logout.student') }}" class="dropdown-item notify-item">
@@ -77,12 +83,9 @@
                     <!-- LOGO -->
                     <div class="logo-box">
                         <a href="{{ url('/home') }}" class="logo text-center">
-                            <span class="logo-lg text-white d-flex align-items-center">
+                            <span class="text-white d-flex align-items-center">
                                 <i class="fas fa-microphone-alt fa-2x"></i> 
-                                <span class="font-20 font-weight-bold ml-2">iSAC Speaking Full Test</span>
-                            </span>
-                            <span class="logo-sm">
-                                <i class="fas fa-microphone-alt text-white fa-2x align-middle"></i>
+                                <span class="font-20 font-weight-bold ml-2">iSAC Speaking</span>
                             </span>
                         </a>
                     </div>
@@ -92,36 +95,6 @@
             </div>
             <!-- end Topbar -->
 
-            <div class="topbar-menu">
-                <div class="container-fluid">
-                    <div id="navigation">
-                        <!-- Navigation Menu-->
-                        <ul class="navigation-menu">
-
-                            <li class="has-submenu">
-                                <a href="#">
-                                    <i class="remixicon-dashboard-line"></i>Dashboards <div class="arrow-down"></div></a>
-                                <ul class="submenu">
-                                    <li>
-                                        <a href="index.html">Dashboard 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="dashboard-2.html">Dashboard 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                        <!-- End navigation menu -->
-
-                        <div class="clearfix"></div>
-                    </div>
-                    <!-- end #navigation -->
-                </div>
-                <!-- end container -->
-            </div>
-            <!-- end navbar-custom -->
-
         </header>
         <!-- End Navigation Bar-->
 
@@ -130,7 +103,7 @@
         <!-- ============================================================== -->
 
         <div class="wrapper">
-            <div class="container-fluid mt-3">
+            <div class="container-fluid">
 
                 @yield('content')
                 
@@ -144,6 +117,26 @@
 
         <!-- Vendor js -->
         <script src="{{ asset('public/assets/js/vendor.min.js') }}"></script>
+
+        <!-- third party js -->
+        <script src="{{ asset('public/assets/libs/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/dataTables.bootstrap4.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/buttons.flash.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/dataTables.keyTable.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/datatables/dataTables.select.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/pdfmake/vfs_fonts.js') }}"></script>
+        <!-- third party js ends -->
+
+        <!-- Datatables init -->
+        <script src="{{ asset('public/assets/js/pages/datatables.init.js') }}"></script>
+
         @yield('js')
         <!-- App js -->
         <script src="{{ asset('public/assets/js/app.min.js') }}"></script>

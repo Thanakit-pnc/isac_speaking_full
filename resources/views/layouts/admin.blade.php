@@ -22,6 +22,9 @@
         <link href="{{ asset('public/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
         <style>
+            audio {
+                outline: 0;
+            }
             @media (max-width: 991px) {
                 .menubar-dark #topnav .has-submenu.active>a {
                     color: #3b73da;

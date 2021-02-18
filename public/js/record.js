@@ -32,7 +32,7 @@ function startRecording(index) {
     input = audioContext.createMediaStreamSource(stream)
 
     recorder = new WebAudioRecorder(input, {
-      workerDir: '/isac_speaking_full/public/js/',
+      workerDir: '/isac-speaking-full/public/js/',
       encoding: fileType,
       numChannels: 2,
       onEncoderLoading: function (recorder, encode) {

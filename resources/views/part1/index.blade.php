@@ -61,7 +61,11 @@
                 </div>
             @endfor
 
-            <div class="col-12 text-center mt-5">
+            <div class="progress mb-2 progress-xl" style="visibility: hidden;">
+                <div class="progress-bar bg-info" role="progressbar"></div>
+            </div>
+
+            <div class="col-12 text-center mt-4">
                 <button id="finish" class="btn btn-success width-lg">Finish</button>
             </div>
         </div>
@@ -71,7 +75,6 @@
 
 @section('js')
 <script src="{{ asset('public/js/WebAudioRecorder.min.js') }}"></script>
-<script src="{{ asset('public/js/WebAudioRecorderMp3.min.js') }}"></script>
 <script src="{{ asset('public/js/record.js') }}"></script>
 <script>
     let timeCount = 3
@@ -84,7 +87,8 @@
         blobObj[fileName] = blob;
     }
     
-    finishBtn.addEventListener('click', () => {
+    finishBtn.addEventListener('click', (e) => {
+        e.target.disabled = true;
         let form_data = new FormData();
         form_data.append('part', 1);
         form_data.append('topic', "{{ $topicNum }}")
@@ -99,14 +103,32 @@
             }
         });
         $.ajax({
+            xhr: function() {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function(evt) {
+                    if (evt.lengthComputable) {
+                        var percentComplete = ((evt.loaded / evt.total) * 100);
+                        $('.progress').css('visibility', 'visible')
+                        $(".progress-bar").width(percentComplete + '%');
+                        $(".progress-bar").html(percentComplete+'%');
+                    }
+                }, false);
+                return xhr;
+            },
             url: "{{ route('store.audio') }}",
             type: 'POST',
             data: form_data,
             processData: false,
             contentType: false,
+            beforesend: function() {
+                $(".progress-bar").width('0%');
+            },
             success: function(data) {
-                console.log(data);
+                if(data.msg == 'Upload Success') {
+                    window.location = data.url;
+                }
             }
+
         });
     });
 

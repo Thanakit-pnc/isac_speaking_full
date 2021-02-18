@@ -17,7 +17,14 @@ Route::middleware('auth:student')->group(function () {
 
     Route::get('part{part}/{topic}', 'SpeakingController@part')->name('part1');
 
+    Route::get('/submit/{id}', 'SpeakingController@submit')->name('index.submit');
+    Route::post('/submit', 'SpeakingController@store_submit')->name('store.submit');
+
     Route::post('upload_audio', 'SpeakingController@store')->name('store.audio');
+
+    Route::get('status', 'StatusController@index')->name('status');
+
+    Route::get('status_details/{id}', 'StatusController@details')->name('status.details');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {

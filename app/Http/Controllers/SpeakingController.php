@@ -24,12 +24,11 @@ class SpeakingController extends Controller
 
     public function store(Request $request) {
 
-        
         $sounds = $request->file('audio_data');
 
         $folder = auth('student')->user()->std_id.'/part'.$request->part.'/'.$request->topic.date('_dmYHis');
 
-        DB::transaction(function () use($request, $folder, $sounds) {
+        $store_record = DB::transaction(function () use($request, $folder, $sounds) {
 
             $speaking = Speaking::create([
                 'std_id' => auth('student')->user()->std_id,
@@ -48,10 +47,11 @@ class SpeakingController extends Controller
                     'created_at' => Carbon::now()
                 ]);
             }
-            
-        });
 
-        return response()->json(['msg' => 'Upload Success']);
+            return response()->json(['msg' => 'Upload Success', 'url' => route('index.submit', ['id' => $speaking->id])]);
+        });
+        
+        return $store_record;
     }
 
     public function formatUrl($string) {
@@ -59,6 +59,23 @@ class SpeakingController extends Controller
         preg_match_all('!\d+!', $string, $number);
      
         return $number[0][0];
+    }
+
+    public function submit($id) {
+
+        $speaking = Speaking::find($id);
+
+        return view('part1.submit', compact('speaking'));
+    }
+
+    public function store_submit(Request $request) {
+
+        Speaking::where('id', $request->id)->update([
+            'expected_score' => $request->expected_score,
+            'current_course' => $request->current_course,
+        ]);
+        
+        return redirect()->route('home.student');
     }
 
 }
