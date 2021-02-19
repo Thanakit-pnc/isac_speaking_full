@@ -17,7 +17,7 @@ class DashboardController extends Controller
     }
 
     public function update(Request $request) {
-
+        
         $alreadySelect = Speaking::where('id', $request->id)->first();
 
         if(!is_null($alreadySelect->th_id)) {

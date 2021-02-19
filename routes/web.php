@@ -38,4 +38,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function() {
     Route::any('/completed', 'Admin\CompletedController@index')->name('completed');
 
     Route::get('/completed/{id}', 'Admin\CompletedController@view')->name('completed.view');
+
+    Route::any('/reports', 'Admin\ReportController@index')->name('reports');
+
+    Route::any('/reports-all', 'Admin\ReportAllController@index')->name('reports.all');
+    Route::get('/report_view/{id}', 'Admin\CompletedController@view')->name('report_view');
 });

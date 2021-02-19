@@ -13,4 +13,9 @@ class Student extends Authenticatable
     protected $primaryKey = 'std_id';
     protected $rememberTokenName = false;
     
+
+    public function speaking() {
+        return $this->hasMany('App\Models\Speaking', 'std_id', 'std_id');
+    }
+
 }

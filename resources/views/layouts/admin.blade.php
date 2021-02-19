@@ -17,6 +17,11 @@
         <link href="{{ asset('public/assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/libs/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 
+        <link href="{{ asset('public/assets/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('public/assets/libs/clockpicker/bootstrap-clockpicker.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('public/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('public/assets/libs/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+
         <!-- App css -->
         <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -24,6 +29,9 @@
         <style>
             audio {
                 outline: 0;
+            }
+            .dt-buttons.btn-group {
+                float: left;
             }
             @media (max-width: 991px) {
                 .menubar-dark #topnav .has-submenu.active>a {
@@ -130,12 +138,12 @@
                             
                             @if (auth()->user()->level == 2)
                                 <li class="has-submenu">
-                                    <a href="#">
+                                    <a href="{{ route('reports') }}">
                                         <i class="mdi mdi-lightbulb-on-outline"></i>Report
                                     </a>
                                 </li>
                                 <li class="has-submenu">
-                                    <a href="#">
+                                    <a href="{{ route('reports.all') }}">
                                         <i class="mdi mdi-lightbulb-on-outline"></i>Report All
                                     </a>
                                 </li>
@@ -188,10 +196,20 @@
         <script src="{{ asset('public/assets/libs/datatables/dataTables.select.min.js') }}"></script>
         <script src="{{ asset('public/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
         <script src="{{ asset('public/assets/libs/pdfmake/vfs_fonts.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
         <!-- third party js ends -->
 
         <!-- Datatables init -->
         <script src="{{ asset('public/assets/js/pages/datatables.init.js') }}"></script>
+
+        <script src="{{ asset('public/assets/libs/bootstrap-colorpicker/bootstrap-colorpicker.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/clockpicker/bootstrap-clockpicker.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/moment/moment.min.js') }}"></script>
+        <script src="{{ asset('public/assets/libs/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+
+        <!-- Init js-->
+        <script src="{{ asset('public/assets/js/pages/form-pickers.init.js') }}"></script>
         @yield('js')
         <!-- App js -->
         <script src="{{ asset('public/assets/js/app.min.js') }}"></script>

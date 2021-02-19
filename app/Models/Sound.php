@@ -10,6 +10,6 @@ class Sound extends Model
     public $timestamps = false;
 
     public function speaking() {
-        return $this->belongsTo('App\Models\Speaking');
+        return $this->belongsTo('App\Models\Speaking', 'speaking_id', 'id');
     }
 }

@@ -28,25 +28,30 @@ class SpeakingController extends Controller
 
         $folder = auth('student')->user()->std_id.'/part'.$request->part.'/'.$request->topic.date('_dmYHis');
 
-        $store_record = DB::transaction(function () use($request, $folder, $sounds) {
+        $sound_arr = [];
 
-            $speaking = Speaking::create([
-                'std_id' => auth('student')->user()->std_id,
-                'part' => $request->part,
-                'topic' => $request->topic,
+        $store_record = DB::transaction(function () use($request, $folder, $sounds, $sound_arr) {
+
+            $speaking = $request->user()->speaking()->create([
+                'part' => 1,
+                'topic' => 2,
                 'status' => 'sent',
                 'due_date' => Carbon::now()->addDays(7)
             ]);
 
-            foreach($sounds as $sound) {
+            foreach($sounds as $key => $sound) {
                 $fileName = $sound->getClientOriginalName().'.mp3';
                 $sound->storeAs($folder, $fileName, 'files');
-                Sound::create([
+
+                $sound_arr[] = [
                     'speaking_id' => $speaking->id,
                     'path' => $folder.'/'.$fileName,
                     'created_at' => Carbon::now()
-                ]);
+                ];
+
             }
+
+            Sound::insert($sound_arr);
 
             return response()->json(['msg' => 'Upload Success', 'url' => route('index.submit', ['id' => $speaking->id])]);
         });
@@ -70,11 +75,11 @@ class SpeakingController extends Controller
 
     public function store_submit(Request $request) {
 
-        Speaking::where('id', $request->id)->update([
+        $request->user()->speaking()->update([
             'expected_score' => $request->expected_score,
             'current_course' => $request->current_course,
         ]);
-        
+
         return redirect()->route('home.student');
     }
 

@@ -15,7 +15,7 @@ class Speaking extends Model
     ];
 
     public function student() {
-        return $this->hasOne('App\Models\Student', 'std_id', 'std_id');
+        return $this->belongsTo('App\Models\Student', 'std_id', 'std_id');
     }
 
     public function user() {
@@ -23,6 +23,7 @@ class Speaking extends Model
     }
 
     public function sound() {
-        return $this->hasMany('App\Models\Sound');
+        return $this->hasMany('App\Models\Sound', 'speaking_id', 'id');
     }
+
 }

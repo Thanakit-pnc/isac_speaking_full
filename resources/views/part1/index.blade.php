@@ -88,7 +88,7 @@
     }
     
     finishBtn.addEventListener('click', (e) => {
-        e.target.disabled = true;
+        // e.target.disabled = true;
         let form_data = new FormData();
         form_data.append('part', "{{ $partNum }}");
         form_data.append('topic', "{{ $topicNum }}")

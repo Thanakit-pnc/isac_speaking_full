@@ -15,7 +15,7 @@ class CompletedController extends Controller
 
         if($request->ajax()) {
 
-            $model = Speaking::select('std_id', 'created_at', 'th_sent_date', DB::raw("CONCAT('Part ', part, '-', IF(topic < 10, CONCAT('0', topic), topic)) as part_topic"))->with(['student'])
+            $model = Speaking::select('id', 'std_id', 'created_at', 'th_sent_date', DB::raw("CONCAT('Part ', part, '-', IF(topic < 10, CONCAT('0', topic), topic)) as part_topic"))->with(['student'])
                 ->where('th_id', auth()->user()->id)
                 ->where('status', 'success');
 
@@ -32,7 +32,7 @@ class CompletedController extends Controller
                 })
                 ->editColumn('view', function (Speaking $speaking) {
                     $route = route('completed.view', ['id' => $speaking->id]);
-                    return "<a href='$route' class='btn btn-success btn-sm'>View</a>";
+                    return "<a href='$route' type='button' class='btn btn-success btn-sm'>View</a>";
                 })
                 ->rawColumns(['created_at', 'th_sent_date', 'view'])
                 ->filterColumn('part_topic', function($query, $keyword) {
