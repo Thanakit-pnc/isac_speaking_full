@@ -6,8 +6,10 @@ use DB;
 use Carbon\Carbon;
 use App\Models\Sound;
 use App\Models\Speaking;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use File;
 
 class SpeakingController extends Controller
 {
@@ -16,9 +18,16 @@ class SpeakingController extends Controller
         $partNum = $this->formatUrl($part);
         $topicNum = $this->formatUrl($topic);
 
-        return view('part1.index', [
+        $topic = $topicNum < 10 ? '0'.$topicNum : $topicNum;
+
+        $sounds['files'] = File::files("public/assets/sounds/part{$partNum}/{$topic}");
+        $sounds['topic_name'] = Topic::topicName($topicNum);
+        $sounds['introduction'] = "public/assets/sounds/part{$partNum}/introduction.mp3";
+        
+        return view('part1-3.index', [
             'partNum' => $partNum,
             'topicNum' => $topicNum,
+            'sounds' => $sounds
         ]);
     }
 
@@ -70,7 +79,7 @@ class SpeakingController extends Controller
 
         $speaking = Speaking::find($id);
 
-        return view('part1.submit', compact('speaking'));
+        return view('part1-3.submit', compact('speaking'));
     }
 
     public function store_submit(Request $request) {

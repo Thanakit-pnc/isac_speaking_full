@@ -29,9 +29,9 @@
                 <div class="tab-pane fade active show" id="part1">
                     <h4>Please select a topic</h4>
                     <p class="text-muted">Each topic will deduct one point from your account</p>
-                    @for ($i = 1; $i <= 5; $i++) 
+                    @for ($i = 1; $i <= 10; $i++) 
                         <a href="{{ route('part', ['part' => '1', 'topic' => 'topic'.$i]) }}"
-                        type="button" class="btn btn-bordered-primary waves-effect waves-light m-1">Topic
+                        type="button" class="btn btn-bordered-primary waves-effect waves-light m-1 {{ $i > 5 ? 'disabled' : ''}}">Topic
                         {{ $i < 10 ? '0'.$i : $i }}</a>
                     @endfor
                 </div>
@@ -40,14 +40,14 @@
                     <p class="text-muted">Each topic will deduct one point from your account</p>
 
                     @for ($i = 1; $i <= 40; $i++) 
-                        <button type="button" class="btn btn-bordered-primary waves-effect waves-light m-1">Topic {{ $i < 10 ? '0'.$i : $i }}</button>
+                        <a href="{{ route('part2.intro', ['number' => $i]) }}" type="button" class="btn btn-bordered-primary waves-effect waves-light m-1">Topic {{ $i < 10 ? '0'.$i : $i }}</a>
                      @endfor
                 </div>
                 <div class="tab-pane fade" id="part3">
                     <h4>Please select a topic</h4>
                     <p class="text-muted">Each topic will deduct one point from your account</p>
-                    @for ($i = 1; $i <= 5; $i++) 
-                        <a href="{{ route('part', ['part' => '3', 'topic' => 'topic'.$i]) }}" type="button" class="btn btn-bordered-primary waves-effect waves-light m-1">Topic {{ $i < 10 ? '0'.$i : $i }}</a>
+                    @for ($i = 1; $i <= 10; $i++) 
+                        <a href="{{ route('part', ['part' => '3', 'topic' => 'topic'.$i]) }}" type="button" class="btn btn-bordered-primary waves-effect waves-light m-1 {{ $i > 5 ? 'disabled' : ''}}">Topic {{ $i < 10 ? '0'.$i : $i }}</a>
                     @endfor
                 </div>
             </div>

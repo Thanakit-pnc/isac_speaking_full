@@ -37,7 +37,8 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <h3 class="text-muted">Part {{ $partNum }} <i class="fas fa-angle-right font-16 align-middle"></i> Topic {{ $topicNum }}</h3>
+        <h3 class="text-muted">Part {{ $partNum }} <i class="fas fa-angle-right font-16 align-middle"></i> Topic {{ $topicNum }} <span class="float-right">{{ $sounds['topic_name'] }}</span></h3>
+        <div class="clearfix"></div>
         <div class="card-box">
             <div class="row d-none d-md-flex">
                 <div class="col-6">
@@ -48,18 +49,18 @@
                 </div>
             </div>
 
-            @for ($i = 1; $i <= 8; $i++)
+            @foreach ($sounds['files'] as $sound)
                 <div class="d-flex justify-content-between flex-column flex-md-row align-items-center my-3 rec-container">
                     <div class="d-flex align-items-center flex-1 w-100">
-                        <p class="mb-0 mr-2 mr-md-3 font-16 text-dark text-nowrap">Q {{ $i }}:</p>
-                        <audio src="#" controls></audio>
+                        <p class="mb-0 mr-2 mr-md-3 font-16 text-dark text-nowrap">Q {{ $loop->index+1 }}:</p>
+                        <audio src="{{ asset($sound) }}" controls controlsList="nodownload"></audio>
                     </div>
                     <div class="d-flex align-items-center flex-1 mt-3 mt-md-0 show-record w-100">
-                        <p class="mb-0 mr-2 mr-md-3 font-16 text-dark text-nowrap">A {{ $i }}:</p>
+                        <p class="mb-0 mr-2 mr-md-3 font-16 text-dark text-nowrap">A {{ $loop->index+1 }}:</p>
                         <button class="record btn btn-dark width-lg font-weight-bold"><i class="fas fa-microphone-alt"></i> Record</button>
                     </div>
                 </div>
-            @endfor
+            @endforeach
 
             <div class="progress mb-2 progress-xl" style="visibility: hidden;">
                 <div class="progress-bar bg-info" role="progressbar"></div>
@@ -72,6 +73,20 @@
     </div>
 </div>
 @endsection
+
+@component('components.audio')
+    @slot('title')
+        Introduction
+    @endslot
+
+    @slot('textBtn')
+        Play
+    @endslot
+
+    @slot('path')
+         {{ $sounds['introduction'] }}
+    @endslot
+@endcomponent
 
 @section('js')
 <script src="{{ asset('public/js/WebAudioRecorder.min.js') }}"></script>
@@ -137,6 +152,23 @@
         $(recordBox).eq(indexBox).find('.reset').remove();
         $(recordBox).eq(indexBox).find('.record').css('display', 'block')
     }
+
+    $('.record').attr('disabled', true)
+
+    $('#soundModal').modal({
+        show: true,
+        keyboard: false,
+        backdrop: 'static'
+    })
+
+    $('#btnPlaySound').on('click', () => {
+        $('#audio')[0].play();
+        $('#soundModal').modal('hide')
+    })
+
+    $('#audio').on('ended', () => {
+        $('.record').attr('disabled', false)
+    })
 
 </script>
 @endsection

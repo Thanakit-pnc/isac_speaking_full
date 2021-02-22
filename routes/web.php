@@ -17,6 +17,9 @@ Route::middleware('auth:student')->group(function () {
 
     Route::get('part{part}/{topic}', 'SpeakingController@part')->name('part');
 
+    Route::get('part2/topic{number}/intro', 'SpeakingPartTwoController@intro')->name('part2.intro');
+    Route::get('part2/topic{number}/record', 'SpeakingPartTwoController@record')->name('part2.record');
+
     Route::get('/submit/{id}', 'SpeakingController@submit')->name('index.submit');
     Route::post('/submit', 'SpeakingController@store_submit')->name('store.submit');
 
