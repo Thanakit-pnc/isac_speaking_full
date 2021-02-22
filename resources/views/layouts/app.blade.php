@@ -17,6 +17,9 @@
         <link href="{{ asset('public/assets/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/libs/datatables/select.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 
+        <!-- Lightbox css -->
+        <link href="{{ asset('public/assets/libs/magnific-popup/magnific-popup.css') }}" rel="stylesheet" type="text/css" />
+
         <!-- App css -->
         <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -138,6 +141,13 @@
 
         <!-- Datatables init -->
         <script src="{{ asset('public/assets/js/pages/datatables.init.js') }}"></script>
+
+        <!-- Magnific Popup-->
+        <script src="{{ asset('public/assets/libs/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+        <!-- Gallery Init-->
+        <script src="{{ asset('public/assets/js/pages/gallery.init.js') }}"></script>
+
+        <script src="{{ asset('public/assets/libs/jquery-knob/jquery.knob.min.js') }}"></script>
 
         @yield('js')
         <!-- App js -->

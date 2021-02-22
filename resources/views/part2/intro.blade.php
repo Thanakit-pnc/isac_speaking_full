@@ -8,11 +8,13 @@
                     <h3 class="text-center text-white m-0">Topic {{ $data['topic'] }}</h3>
                 </div>
                 <div class="card-body">
-                    <img src="{{ asset($data['images']) }}" alt="" class="w-100">
+                    <a href="{{ asset($data['images']) }}" class="image-popup" title="Topic {{ $data['topic'] }}">
+                        <img src="{{ asset($data['images']) }}" class="img-fluid" alt="work-thumbnail">
+                    </a>
                 </div>
             </div>
 
-            <h1 id="timer" class="text-center">01:20</h1>
+            <h1 id="timer" class="text-center display-4 font-weight-bold text-primary">01:20</h1>
         </div>
     </div>
 @endsection
@@ -67,7 +69,7 @@
         })
 
         $('#btnPlaySound').on('click', () => {
-            $('#audio')[0].play();
+            // $('#audio')[0].play();
             startTime()
             $('#soundModal').modal('hide')
         })

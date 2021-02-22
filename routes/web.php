@@ -16,12 +16,12 @@ Route::middleware('auth:student')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home.student');
 
     Route::get('part{part}/{topic}', 'SpeakingController@part')->name('part');
+    Route::get('/submit/{id}', 'SpeakingController@submit')->name('index.submit');
+    Route::post('/upload_sound', 'SpeakingController@store_submit')->name('store.submit');
 
     Route::get('part2/topic{number}/intro', 'SpeakingPartTwoController@intro')->name('part2.intro');
     Route::get('part2/topic{number}/record', 'SpeakingPartTwoController@record')->name('part2.record');
-
-    Route::get('/submit/{id}', 'SpeakingController@submit')->name('index.submit');
-    Route::post('/submit', 'SpeakingController@store_submit')->name('store.submit');
+    Route::post('/upload_sound', 'SpeakingPartTwoController@store')->name('part2.store');
 
     Route::post('upload_audio', 'SpeakingController@store')->name('store.audio');
 

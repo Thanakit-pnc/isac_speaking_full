@@ -42,8 +42,8 @@ class SpeakingController extends Controller
         $store_record = DB::transaction(function () use($request, $folder, $sounds, $sound_arr) {
 
             $speaking = $request->user()->speaking()->create([
-                'part' => 1,
-                'topic' => 2,
+                'part' => $request->part,
+                'topic' => $request->topic,
                 'status' => 'sent',
                 'due_date' => Carbon::now()->addDays(7)
             ]);

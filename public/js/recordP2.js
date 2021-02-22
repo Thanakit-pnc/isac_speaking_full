@@ -13,6 +13,7 @@ const finishBtn = document.getElementById('finish')
 const resetBtn = document.getElementById('reset')
 const loadingBtn = document.getElementById('loading')
 const audioContainer = document.getElementById('audio-container')
+const encodeProcessEl = document.getElementById('encode-process')
 
 let fileName
 
@@ -37,8 +38,19 @@ function startRecording() {
       encoding: fileType,
       numChannels: 2,
       onEncoderLoading: function (recorder, encode) {
-          recordBtn.classList.add('d-none');
-          loadingBtn.classList.remove('d-none');
+        recordBtn.classList.add('d-none')
+        loadingBtn.classList.remove('d-none')
+      },
+      onEncodingProgress: function (recorder, progress) {
+        if (progress === 1) {
+          encodeProcessEl.remove()
+        }
+      },
+      onTimeout: function (recorder) {
+        recorder.finishRecording()
+        stopTime()
+        loadingBtn.classList.add('d-none')
+        encodeProcessEl.classList.remove('d-none')
       },
     })
 
@@ -52,17 +64,19 @@ function startRecording() {
     })
 
     recorder.onComplete = function (recorder, blob) {
-      totalTime = timeCount
       createDownloadLink(blob, recorder.encoding)
     }
 
     recorder.onError = function (recorder, msg) {
       console.log(msg)
     }
-    startTime()
-    recorder.startRecording()
-  })
 
+    recorder.startRecording()
+
+    if (recorder.isRecording()) {
+      startTime()
+    }
+  })
 }
 
 // Count Time
@@ -76,10 +90,6 @@ function setTime() {
   let sec = seconds < 10 ? '0' + seconds : seconds
 
   $('#timer').text(min + ':' + sec)
-
-  if (totalTime === 0) {
-    stopTime()
-  }
 }
 
 function startTime() {
