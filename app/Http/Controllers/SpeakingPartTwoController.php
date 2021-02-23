@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use File;
+use Carbon\Carbon;
 use App\Models\Sound;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class SpeakingPartTwoController extends Controller
@@ -45,12 +48,13 @@ class SpeakingPartTwoController extends Controller
 
         $sound = $request->file('audio_data');
         $fileName = $sound->getClientOriginalName().'_'.date('dmYHis').'.mp3';
-        $folder = auth('student')->user()->std_id.'/part2/';
-        // $sound->storeAs($folder, $fileName, 'files');
+        $folder = auth('student')->user()->std_id.'/part2';
+        
 
-        dd($fileName, $folder);
+        $store_record = DB::transaction(function() use($request, $sound, $folder, $fileName) {
 
-        $store_record = DB::transaction(function() use($request, $folder, $fileName) {
+            $sound->storeAs($folder, $fileName, 'files');
+
             $speaking = $request->user()->speaking()->create([
                 'part' => 2,
                 'topic' => $request->topic,
@@ -63,8 +67,12 @@ class SpeakingPartTwoController extends Controller
                 'path' => $folder.'/'.$fileName,
                 'created_at' => Carbon::now()
             ]);
+
+            Student::decrementPoint();
+
+            return response()->json(['msg' => 'Upload Success', 'url' => route('index.submit', ['id' => $speaking->id])]);
         });
 
-        return response()->json(['msg' => 'Upload Success']);
+        return $store_record;
     }
 }

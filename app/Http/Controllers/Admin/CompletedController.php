@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Speaking;
-use App\Models\Student;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use DB;
 use DataTables;
+use App\Models\PartOne;
+use App\Models\Student;
+use App\Models\Speaking;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CompletedController extends Controller
 {
@@ -49,6 +50,14 @@ class CompletedController extends Controller
 
         $speakings = Speaking::with('sound', 'student')->where('id', $id)->first();
 
-        return view('admin.completed_view', compact('speakings'));
+        if($speakings->part == 1) {
+            $questions = PartOne::question($speakings->topic);
+        } else if($speakings->part == 3) {
+            $questions = PartOne::question($speakings->topic);
+        } else {
+            $questions = '';
+        }
+
+        return view('admin.completed_view', compact('speakings', 'questions'));
     }
 }

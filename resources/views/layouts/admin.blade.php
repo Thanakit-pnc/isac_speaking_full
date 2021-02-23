@@ -21,7 +21,8 @@
         <link href="{{ asset('public/assets/libs/clockpicker/bootstrap-clockpicker.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/libs/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
-
+        <!-- Lightbox css -->
+        <link href="{{ asset('public/assets/libs/magnific-popup/magnific-popup.css') }}" rel="stylesheet" type="text/css" />
         <!-- App css -->
         <link href="{{ asset('public/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -210,6 +211,12 @@
 
         <!-- Init js-->
         <script src="{{ asset('public/assets/js/pages/form-pickers.init.js') }}"></script>
+
+        <!-- Magnific Popup-->
+        <script src="{{ asset('public/assets/libs/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+        <!-- Gallery Init-->
+        <script src="{{ asset('public/assets/js/pages/gallery.init.js') }}"></script>
+
         @yield('js')
         <!-- App js -->
         <script src="{{ asset('public/assets/js/app.min.js') }}"></script>

@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use DB;
+use File;
 use Carbon\Carbon;
 use App\Models\Sound;
-use App\Models\Speaking;
 use App\Models\Topic;
+use App\Models\Student;
+use App\Models\Speaking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use File;
 
 class SpeakingController extends Controller
 {
@@ -62,6 +63,8 @@ class SpeakingController extends Controller
 
             Sound::insert($sound_arr);
 
+            Student::decrementPoint();
+
             return response()->json(['msg' => 'Upload Success', 'url' => route('index.submit', ['id' => $speaking->id])]);
         });
         
@@ -73,23 +76,6 @@ class SpeakingController extends Controller
         preg_match_all('!\d+!', $string, $number);
      
         return $number[0][0];
-    }
-
-    public function submit($id) {
-
-        $speaking = Speaking::find($id);
-
-        return view('part1-3.submit', compact('speaking'));
-    }
-
-    public function store_submit(Request $request) {
-
-        $request->user()->speaking()->update([
-            'expected_score' => $request->expected_score,
-            'current_course' => $request->current_course,
-        ]);
-
-        return redirect()->route('home.student');
     }
 
 }

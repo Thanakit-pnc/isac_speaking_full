@@ -25,16 +25,16 @@ class Topic extends Model
                 $topic = 'Shopping';
                 break;
             case "6":
-                $topic = 'City Life';
+                $topic = 'Sports and leisure';
                 break;
             case "7":
-                $topic = 'City Life';
+                $topic = 'Technology';
                 break;
             case "8":
-                $topic = 'City Life';
+                $topic = 'Tourism';
                 break;
             case "9":
-                $topic = 'City Life';
+                $topic = 'Work';
                 break;
             case "10":
                 $topic = 'City Life';

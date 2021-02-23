@@ -98,11 +98,15 @@
     function createDownloadLink(blob) {
         let url = URL.createObjectURL(blob);
         $(recordBox).eq(indexBox).append(`<audio src="${url}" controlsList="nodownload" controls></audio> 
-        <button class="btn btn-icon waves-effect waves-light btn-danger btn-sm ml-auto reset" onclick="reset()"> <i class="fas fa-undo"></i> </button>`) 
+        <button class="btn btn-icon waves-effect waves-light btn-danger btn-sm ml-auto reset" onclick="reset(fileName)"> <i class="fas fa-undo"></i> </button>`) 
         blobObj[fileName] = blob;
     }
     
     finishBtn.addEventListener('click', (e) => {
+        if(Object.keys(blobObj).length < 8) {
+            alert('Please record 8');
+            return;
+        }
         // e.target.disabled = true;
         let form_data = new FormData();
         form_data.append('part', "{{ $partNum }}");
@@ -147,7 +151,8 @@
         });
     });
 
-    function reset() {
+    function reset(fileName) {
+        delete blobObj[fileName]
         $(recordBox).eq(indexBox).find('audio').remove();
         $(recordBox).eq(indexBox).find('.reset').remove();
         $(recordBox).eq(indexBox).find('.record').css('display', 'block')

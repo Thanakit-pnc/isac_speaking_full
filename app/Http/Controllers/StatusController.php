@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DataTables;
+use App\Models\PartOne;
 use App\Models\Speaking;
 use Illuminate\Http\Request;
-use DataTables;
 
 class StatusController extends Controller
 {
@@ -58,6 +59,14 @@ class StatusController extends Controller
 
         $speakings = Speaking::with('sound', 'student')->where('id', $id)->first();
 
-        return view('student.status_details', compact('speakings'));
+        if($speakings->part == 1) {
+            $questions = PartOne::question($speakings->topic);
+        } else if($speakings->part == 3) {
+            $questions = PartOne::question($speakings->topic);
+        } else {
+            $questions = '';
+        }
+
+        return view('student.status_details', compact('speakings', 'questions'));
     }
 }

@@ -15,5 +15,5 @@
         </div>
     </div>
 
-    {{-- <audio src="{{ asset($path) }}" id="audio"></audio> --}}
+    <audio src="{{ asset($path) }}" id="audio"></audio>
 @endsection

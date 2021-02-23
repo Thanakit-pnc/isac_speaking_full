@@ -110,7 +110,7 @@
                     }, false);
                     return xhr;
                 },
-                url: "{{ route('part2.store') }}",
+                url: "{{ route('part2.upload') }}",
                 type: 'POST',
                 data: form_data,
                 processData: false,
@@ -120,7 +120,8 @@
                 },
                 success: function(data) {
                     if(data.msg == 'Upload Success') {
-                        console.log(data)
+                        window.location = data.url
+                        localStorage.removeItem('listen');
                     }
                 }
 
@@ -145,7 +146,7 @@
     } 
 
     $('#btnPlaySound').on('click', () => {
-        // $('#audio')[0].play();
+        $('#audio')[0].play();
         $('#soundModal').modal('hide')
         localStorage.setItem('listen', true);
     })

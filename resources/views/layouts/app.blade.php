@@ -55,6 +55,13 @@
                     <ul class="list-unstyled topnav-menu float-right mb-0">
 
                         <li class="dropdown notification-list">
+                            <div class="nav-link">
+                                <span class="badge badge-primary">You have {{ \App\Models\Student::showPoint()->point }} {{ str_plural('Point', \App\Models\Student::showPoint()->point) }}</span>
+                            </div>
+                        </li>
+
+                        <li class="dropdown notification-list">
+                            
                             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <img src="{{ asset('public/assets/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
                                 <span class="pro-user-name ml-1 text-capitalize">

@@ -5,17 +5,9 @@
         <div class="col-12">
             <div class="card-box text-dark">
                 <div class="row">
-                    <div class="col-sm-6">
-                        <h3 class="mb-2">Part {{ $speakings->part }} <i class="fas fa-angle-right font-16 align-middle"></i> Topic {{ $speakings->topic }}</h3>
-                        @foreach ($speakings->sound as $key => $sound)
-                            <div class="d-flex">
-                                <p>Q {{ $key+1 }}: Question {{ $key+1 }}</p>
-                            </div>
-                            <div class="d-flex align-items-center mb-3">
-                                <p class="mb-0 mr-2">A {{ $key+1 }}:</p>
-                                <audio src="{{ asset('public/files/'.$sound->path) }}" controls></audio>
-                            </div>
-                        @endforeach
+                    <div class="col-sm-6 font-16">
+                        @component('components.admin.audio_comment', ['speakings' => $speakings, 'questions' => $questions]) 
+                        @endcomponent
                     </div>
                     <div class="col-sm-6">
                         <div class="media mb-2 mt-1">

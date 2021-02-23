@@ -15,18 +15,19 @@ Route::middleware('auth:student')->group(function () {
     });
     Route::get('/home', 'HomeController@index')->name('home.student');
 
+    // Route Part 1 && 3
     Route::get('part{part}/{topic}', 'SpeakingController@part')->name('part');
-    Route::get('/submit/{id}', 'SpeakingController@submit')->name('index.submit');
-    Route::post('/upload_sound', 'SpeakingController@store_submit')->name('store.submit');
-
+    Route::post('upload_audio', 'SpeakingController@store')->name('store.audio');
+    
+    // Route Part 2
     Route::get('part2/topic{number}/intro', 'SpeakingPartTwoController@intro')->name('part2.intro');
     Route::get('part2/topic{number}/record', 'SpeakingPartTwoController@record')->name('part2.record');
-    Route::post('/upload_sound', 'SpeakingPartTwoController@store')->name('part2.store');
+    Route::post('part2/upload', 'SpeakingPartTwoController@store')->name('part2.upload');
 
-    Route::post('upload_audio', 'SpeakingController@store')->name('store.audio');
+    Route::get('/submit/{id}', 'SubmitController@index')->name('index.submit');
+    Route::post('/submit', 'SubmitController@store')->name('store.submit');
 
     Route::get('status', 'StatusController@index')->name('status');
-
     Route::get('status_details/{id}', 'StatusController@details')->name('status.details');
 });
 

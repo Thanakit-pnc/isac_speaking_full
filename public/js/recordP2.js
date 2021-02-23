@@ -89,6 +89,10 @@ function setTime() {
   let min = minutes < 10 ? '0' + minutes : minutes
   let sec = seconds < 10 ? '0' + seconds : seconds
 
+  if(totalTime <= 10) {
+    $('#timer').addClass('text-danger').removeClass('text-primary');
+  }
+
   $('#timer').text(min + ':' + sec)
 }
 
