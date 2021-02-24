@@ -30,7 +30,7 @@
                 serverSide: true,
                 ajax: '{{ route("status") }}',
                 columns: [
-                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'DT_Row_Index', name: 'DT_Row_Index', orderable: false, searchable: false},
                     {data: 'part', name: 'speakings.part'},
                     {data: 'created_at', name: 'speakings.created_at'},
                     {data: 'user', name: 'user.name', orderable: false},

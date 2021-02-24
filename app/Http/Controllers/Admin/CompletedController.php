@@ -40,7 +40,7 @@ class CompletedController extends Controller
                     $sql = "CONCAT('Part ', part, '-', topic)  like ?";
                     $query->whereRaw($sql, ["%{$keyword}%"]);
                 })
-                ->toJson();
+                ->make(true);
         }
 
         return view('admin.completed');

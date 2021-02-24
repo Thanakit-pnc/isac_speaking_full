@@ -47,7 +47,7 @@ class ReportAllController extends Controller
                         $query->whereBetween('th_sent_date', $date_range);
                     }
                 })
-                ->toJson();
+                ->make(true);
         }
 
         return view('admin.reports-all');

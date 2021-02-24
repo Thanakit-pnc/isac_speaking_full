@@ -33,7 +33,7 @@
                 serverSide: true,
                 ajax: '{{ route("completed") }}',
                 columns: [
-                    {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                    {data: 'DT_Row_Index', name: 'DT_Row_Index', orderable: false, searchable: false},
                     {data: 'student', name: 'student.std_name', orderable: false},
                     {data: 'part_topic', name: 'part_topic'},
                     {data: 'created_at', name: 'speakings.created_at'},
