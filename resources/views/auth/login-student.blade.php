@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>iSAC Speaking Full Test</title>
+        <title>iSAC Speaking</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
@@ -29,7 +29,7 @@
                                 <img src="{{ asset('public/assets/images/logo-nc.png') }}" alt="" class="img-logo">
 
                                 <div class="middle">
-                                    <span><i class="fas fa-microphone-alt"></i>SAC</span> Speaking 
+                                    <span><i class="fas fa-microphone-alt"></i>iSAC</span> Speaking 
                                 </div>
 
                                 <div class="button-text">
