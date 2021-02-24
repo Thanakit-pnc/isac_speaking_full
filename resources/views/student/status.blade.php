@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card-box">
-                <h3 class="mb-3"><i class="mdi mdi-history"></i> Status</h3>
+                <h3 class="mb-3"><i class="fas fa-microphone-alt"></i> Status</h3>
 
                 <table class="table table-hover dt-responsive nowrap datatable">
                     <thead>

@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header bg-primary">
+                <div class="card-header bg-primary py-2">
                     <h3 class="text-center text-white m-0">Topic {{ $data['topic'] }}</h3>
                 </div>
                 <div class="card-body">

@@ -24,6 +24,10 @@
                 border-bottom: 1px solid #ccc;
                 padding-bottom: 10px;
             }
+
+            .text-header {
+                font-size: 15px;
+            }
         }
 
         @media(max-width: 500px) {
@@ -37,7 +41,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <h3 class="text-muted">Part {{ $partNum }} <i class="fas fa-angle-right font-16 align-middle"></i> Set {{ $setNum }} <span class="float-right">{{ $sounds['set_name'] }}</span></h3>
+        <h3 class="text-muted text-header">Part {{ $partNum }} <i class="fas fa-angle-right align-middle"></i> Set {{ $setNum }} <span class="float-right">{{ $sounds['set_name'] }}</span></h3>
         <div class="clearfix"></div>
         <div class="card-box">
             <div class="row d-none d-md-flex">

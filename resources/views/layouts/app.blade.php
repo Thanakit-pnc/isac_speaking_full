@@ -51,6 +51,18 @@
                     <ul class="list-unstyled topnav-menu float-right mb-0">
 
                         <li class="dropdown notification-list">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle nav-link">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </li>
+
+                        <li class="dropdown notification-list">
                             <div class="nav-link">
                                 <span class="badge badge-primary">You have {{ \App\Models\Student::showPoint()->point }} {{ str_plural('Point', \App\Models\Student::showPoint()->point) }}</span>
                             </div>
@@ -89,9 +101,12 @@
                     <!-- LOGO -->
                     <div class="logo-box">
                         <a href="{{ url('/home') }}" class="logo text-center">
-                            <span class="text-white d-flex align-items-center">
+                            <span class="logo-lg text-white d-flex align-items-center">
                                 <i class="fas fa-microphone-alt fa-2x"></i> 
                                 <span class="font-20 font-weight-bold ml-2">iSAC Speaking</span>
+                            </span>
+                            <span class="logo-sm text-white">
+                                <i class="fas fa-microphone-alt fa-2x align-middle"></i> 
                             </span>
                         </a>
                     </div>
