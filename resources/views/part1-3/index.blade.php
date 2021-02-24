@@ -37,7 +37,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <h3 class="text-muted">Part {{ $partNum }} <i class="fas fa-angle-right font-16 align-middle"></i> Topic {{ $topicNum }} <span class="float-right">{{ $sounds['topic_name'] }}</span></h3>
+        <h3 class="text-muted">Part {{ $partNum }} <i class="fas fa-angle-right font-16 align-middle"></i> Set {{ $setNum }} <span class="float-right">{{ $sounds['set_name'] }}</span></h3>
         <div class="clearfix"></div>
         <div class="card-box">
             <div class="row d-none d-md-flex">
@@ -92,7 +92,7 @@
 <script src="{{ asset('public/js/WebAudioRecorder.min.js') }}"></script>
 <script src="{{ asset('public/js/record.js') }}"></script>
 <script>
-    let timeCount = 3
+    let timeCount = "{{ $time }}"
     totalTime = timeCount;
     let blobObj = {};
     function createDownloadLink(blob) {
@@ -104,13 +104,13 @@
     
     finishBtn.addEventListener('click', (e) => {
         if(Object.keys(blobObj).length < 8) {
-            alert('Please record 8');
+            alert('Please record all your answers');
             return;
         }
         // e.target.disabled = true;
         let form_data = new FormData();
         form_data.append('part', "{{ $partNum }}");
-        form_data.append('topic', "{{ $topicNum }}")
+        form_data.append('set', "{{ $setNum }}")
 
         for(let answer in blobObj) {
             form_data.append('audio_data[]', blobObj[answer], answer);

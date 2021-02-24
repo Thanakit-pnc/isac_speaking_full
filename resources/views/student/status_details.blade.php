@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="border border-w-2 p-2 mb-2 font-15">
-                            The scores awarded reflect your performance in this Part 2 Speaking Test only and do not anticipate an IELTS band score. They relate to the scores set out in <a href="{{ asset('public/assets/pdf/speaking-band-descriptors.pdf') }}" download>the IELTS Band Descriptors</a>.
+                            The scores awarded reflect your performance in this Part {{ $speakings->part }} Speaking Test only and do not anticipate an IELTS band score. They relate to the scores set out in <a href="{{ asset('public/assets/pdf/speaking-band-descriptors.pdf') }}" download>the IELTS Band Descriptors</a>.
                         </div>
 
                         <div class="d-flex align-items-center d-flex justify-content-between">

@@ -29,7 +29,7 @@
                                 <img src="{{ asset('public/assets/images/logo-nc.png') }}" alt="" class="img-logo">
 
                                 <div class="middle">
-                                    <span><i class="fas fa-microphone-alt"></i>SAC</span> Speaking Full Test
+                                    <span><i class="fas fa-microphone-alt"></i>SAC</span> Speaking 
                                 </div>
 
                                 <div class="button-text">

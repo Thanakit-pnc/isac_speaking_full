@@ -16,7 +16,7 @@ Route::middleware('auth:student')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home.student');
 
     // Route Part 1 && 3
-    Route::get('part{part}/{topic}', 'SpeakingController@part')->name('part');
+    Route::get('part{part}/{set}', 'SpeakingController@part')->name('part');
     Route::post('upload_audio', 'SpeakingController@store')->name('store.audio');
     
     // Route Part 2

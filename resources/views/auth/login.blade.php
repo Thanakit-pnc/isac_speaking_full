@@ -28,9 +28,9 @@
                                 <div class="text-center w-100 m-auto">
                                     <h4 class="text-center text-dark d-flex justify-content-center align-items-center flex-column flex-sm-row">
                                         <i class="fas fa-microphone-alt fa-2x mr-2 mb-2 mb-sm-0"></i>
-                                        <span class="font-weight-bold font-20">iSAC Speaking Full Test</span>
+                                        <span class="font-weight-bold font-20">iSAC Speaking</span>
                                     </h4>
-                                    <h3 class="my-3"><ins>ADMIN</ins></h3>
+                                    <h3 class="my-3"><ins>Teacher</ins></h3>
                                 </div>
 
                                 @php

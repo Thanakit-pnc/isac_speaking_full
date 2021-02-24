@@ -26,7 +26,7 @@
                 <div class="text-left text-muted mt-3">
                     <p>After you submit your test, an experienced IELTS teacher will listen to your recording and provide an NC Band Score as well as some feedback on how you can improve. </p>
 
-                    <p class="mb-0">Please check the <b><i>Status</i></b> tab to track your test, which will be returned to you in 1 – 6 days.</p>
+                    <p class="mb-0">Please check the <b><i>iSAC Status</i></b> tab to track your test, which will be returned to you in 7 - 10 days.</p>
                 </div>
             </div>
         </div>

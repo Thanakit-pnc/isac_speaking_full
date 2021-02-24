@@ -4,43 +4,43 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Topic extends Model
+class Set extends Model
 {
-    public static function topicName($topicNum) {
+    public static function setName($setNum) {
 
-        switch($topicNum) {
+        switch($setNum) {
             case "1":
-                $topic = 'City Life';
+                $set = 'City Life';
                 break;
             case "2":
-                $topic = 'Crime and punishment';
+                $set = 'Crime and punishment';
                 break;
             case "3":
-                $topic = 'Environment';
+                $set = 'Environment';
                 break;
             case "4":
-                $topic = 'Food';
+                $set = 'Food';
                 break;
             case "5":
-                $topic = 'Shopping';
+                $set = 'Shopping';
                 break;
             case "6":
-                $topic = 'Sports and leisure';
+                $set = 'Sports and leisure';
                 break;
             case "7":
-                $topic = 'Technology';
+                $set = 'Technology';
                 break;
             case "8":
-                $topic = 'Tourism';
+                $set = 'Tourism';
                 break;
             case "9":
-                $topic = 'Work';
+                $set = 'Work';
                 break;
             case "10":
-                $topic = 'City Life';
+                $set = 'City Life';
                 break;
         }
 
-        return $topic;
+        return $set;
     }
 }

@@ -32,7 +32,7 @@ function startRecording(index) {
     input = audioContext.createMediaStreamSource(stream)
 
     recorder = new WebAudioRecorder(input, {
-      workerDir: '/isac-speaking-full/public/js/',
+      workerDir: '/isac-speaking/public/js/',
       encoding: fileType,
       numChannels: 2,
       onEncoderLoading: function (recorder, encode) {
@@ -40,7 +40,7 @@ function startRecording(index) {
         $(recordBox).eq(indexBox).append(`
 				<button class="btn btn-dark width-lg d-flex justify-content-center align-items-center loading" type="button">
 					<span class="spinner-grow spinner-grow-sm mr-1 align-middle" role="status" aria-hidden="true"></span>
-					<span id="min">00</span>:<span id="sec">20</span>
+					<span id="min">00</span>:<span id="sec">${ totalTime }</span>
 				</button>`)
         $('.record').attr('disabled', true)
       },

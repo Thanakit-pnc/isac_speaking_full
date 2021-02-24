@@ -6,7 +6,7 @@ use DB;
 use File;
 use Carbon\Carbon;
 use App\Models\Sound;
-use App\Models\Topic;
+use App\Models\Set;
 use App\Models\Student;
 use App\Models\Speaking;
 use Illuminate\Http\Request;
@@ -17,18 +17,25 @@ class SpeakingController extends Controller
     public function part($part, $topic) {
 
         $partNum = $this->formatUrl($part);
-        $topicNum = $this->formatUrl($topic);
+        $setNum = $this->formatUrl($topic);
 
-        $topic = $topicNum < 10 ? '0'.$topicNum : $topicNum;
+        $topic = $setNum < 10 ? '0'.$setNum : $setNum;
 
         $sounds['files'] = File::files("public/assets/sounds/part{$partNum}/{$topic}");
-        $sounds['topic_name'] = Topic::topicName($topicNum);
+        $sounds['set_name'] = Set::setName($setNum);
         $sounds['introduction'] = "public/assets/sounds/part{$partNum}/introduction.mp3";
+
+        if($partNum == 1) {
+            $time = 20;
+        } else {
+            $time = 40;
+        }
         
         return view('part1-3.index', [
             'partNum' => $partNum,
-            'topicNum' => $topicNum,
-            'sounds' => $sounds
+            'setNum' => $setNum,
+            'sounds' => $sounds,
+            'time' => $time
         ]);
     }
 
@@ -36,7 +43,7 @@ class SpeakingController extends Controller
 
         $sounds = $request->file('audio_data');
 
-        $folder = auth('student')->user()->std_id.'/part'.$request->part.'/'.$request->topic.date('_dmYHis');
+        $folder = auth('student')->user()->std_id.'/part'.$request->part.'/'.$request->set.date('_dmYHis');
 
         $sound_arr = [];
 
@@ -44,7 +51,7 @@ class SpeakingController extends Controller
 
             $speaking = $request->user()->speaking()->create([
                 'part' => $request->part,
-                'topic' => $request->topic,
+                'topic' => $request->set,
                 'status' => 'sent',
                 'due_date' => Carbon::now()->addDays(7)
             ]);

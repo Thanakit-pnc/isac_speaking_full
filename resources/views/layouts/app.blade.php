@@ -25,10 +25,6 @@
         <link href="{{ asset('public/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('public/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
         <style>
-            .wrapper {
-                padding-top: 100px;
-            }
-
             audio {
                 outline: 0;
             }
@@ -75,7 +71,7 @@
                                 </div>
 
                                 <a href="{{ route('status') }}" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-history"></i>
+                                    <i class="fas fa-microphone-alt"></i>
                                     <span>Status</span>
                                 </a>
 
@@ -105,6 +101,35 @@
             </div>
             <!-- end Topbar -->
 
+            <div class="topbar-menu">
+                <div class="container-fluid">
+                    <div id="navigation">
+                        <!-- Navigation Menu-->
+                        <ul class="navigation-menu">
+
+                            <li class="has-submenu">
+                                <a href="{{ route('home.student') }}">
+                                    <i class="fas fa-home"></i>Home
+                                </a>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href="{{ route('status') }}">
+                                    <i class="fas fa-microphone-alt"></i>iSAC Status
+                                </a>
+                            </li>
+
+                        </ul>
+                        <!-- End navigation menu -->
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- end #navigation -->
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end navbar-custom -->
+
         </header>
         <!-- End Navigation Bar-->
 
@@ -113,7 +138,7 @@
         <!-- ============================================================== -->
 
         <div class="wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid mt-3">
 
                 @yield('content')
                 
