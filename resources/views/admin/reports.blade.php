@@ -26,7 +26,7 @@
                </div>
             </form>
 
-            <table id="datatable" class="table table-bordered dt-responsive nowrap font-16">
+            <table id="datatable" class="table table-bordered dt-responsive w-100 font-16">
                 <thead>
                     <tr>
                         <th>#</th>

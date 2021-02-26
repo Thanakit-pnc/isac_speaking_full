@@ -9,6 +9,11 @@ Route::get('/login-student', 'Auth\LoginStudentController@showLoginForm')->name(
 Route::post('/login-student', 'Auth\LoginStudentController@login');
 Route::get('/logout', 'Auth\LoginStudentController@logout')->name('logout.student');
 
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return redirect('/home');
+});
+
 Route::middleware('auth:student')->group(function () {
     Route::get('/', function() {
         return redirect('home');
