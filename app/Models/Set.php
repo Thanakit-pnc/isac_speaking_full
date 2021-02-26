@@ -37,7 +37,7 @@ class Set extends Model
                 $set = 'Work';
                 break;
             case "10":
-                $set = 'City Life';
+                $set = 'Clothes';
                 break;
         }
 

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PartTwo extends Model
+class PartThree extends Model
 {
     public static function question($topic) {
         switch($topic) {

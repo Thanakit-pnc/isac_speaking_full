@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use DB;
 use DataTables;
 use App\Models\PartOne;
+use App\Models\PartThree;
 use App\Models\Student;
 use App\Models\Speaking;
 use Illuminate\Http\Request;
@@ -53,7 +54,7 @@ class CompletedController extends Controller
         if($speakings->part == 1) {
             $questions = PartOne::question($speakings->topic);
         } else if($speakings->part == 3) {
-            $questions = PartOne::question($speakings->topic);
+            $questions = PartThree::question($speakings->topic);
         } else {
             $questions = '';
         }

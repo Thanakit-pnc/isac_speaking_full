@@ -2,7 +2,8 @@
 /public/hot
 /public/storage
 /public/files
-/public/js
+/public/js/record.js
+/public/js/recordP2.js
 /storage/*.key
 /vendor
 /.idea

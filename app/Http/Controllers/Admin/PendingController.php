@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 use App\Models\PartOne;
-use App\Models\PartTwo;
+use App\Models\PartThree;
 use App\Models\Speaking;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,12 +25,14 @@ class PendingController extends Controller
 
     public function check($id) {
 
-        $speakings = Speaking::with('sound', 'student')->where('id', $id)->first();
+        $speakings = Speaking::with(['sound' => function($query) {
+            $query->orderBy('path', 'ASC');
+        }, 'student'])->where('id', $id)->first();
 
         if($speakings->part == 1) {
             $questions = PartOne::question($speakings->topic);
         } else if($speakings->part == 3) {
-            $questions = PartOne::question($speakings->topic);
+            $questions = PartThree::question($speakings->topic);
         } else {
             $questions = '';
         }

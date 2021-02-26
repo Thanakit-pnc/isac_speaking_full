@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DataTables;
 use App\Models\PartOne;
 use App\Models\Speaking;
+use App\Models\PartThree;
 use Illuminate\Http\Request;
 
 class StatusController extends Controller
@@ -62,7 +63,7 @@ class StatusController extends Controller
         if($speakings->part == 1) {
             $questions = PartOne::question($speakings->topic);
         } else if($speakings->part == 3) {
-            $questions = PartOne::question($speakings->topic);
+            $questions = PartThree::question($speakings->topic);
         } else {
             $questions = '';
         }
