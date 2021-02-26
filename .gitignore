@@ -1,9 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
-/public/files
-/public/js/record.js
-/public/js/recordP2.js
+/public/files/
+/public/js/
 /storage/*.key
 /vendor
 /.idea

@@ -102,8 +102,16 @@
     function createDownloadLink(blob) {
         let url = URL.createObjectURL(blob);
         $(recordBox).eq(indexBox).append(`<audio src="${url}" controlsList="nodownload" controls></audio> 
-        <button class="btn btn-icon waves-effect waves-light btn-danger btn-sm ml-auto reset" onclick="reset(fileName)"> <i class="fas fa-undo"></i> </button>`) 
+        <button class="btn btn-icon waves-effect waves-light btn-danger btn-sm ml-auto reset"> <i class="fas fa-undo"></i> </button>`) 
         blobObj[fileName] = blob;
+
+        recordBox.forEach((box, index) => {
+            if(box.querySelector('.reset')) {
+                box.querySelector('.reset').addEventListener('click', () => {
+                    reset(index)
+                })
+            }
+        })
     }
     
     finishBtn.addEventListener('click', (e) => {
@@ -155,11 +163,11 @@
         });
     });
 
-    function reset(fileName) {
-        delete blobObj[fileName]
-        $(recordBox).eq(indexBox).find('audio').remove();
-        $(recordBox).eq(indexBox).find('.reset').remove();
-        $(recordBox).eq(indexBox).find('.record').css('display', 'block')
+    function reset(index) {
+        delete blobObj[`answer${index+1}`]
+        $(recordBox).eq(index).find('audio').remove();
+        $(recordBox).eq(index).find('.reset').remove();
+        $(recordBox).eq(index).find('.record').css('display', 'block');
     }
 
     $('.record').attr('disabled', true)

@@ -151,9 +151,9 @@ class PartThree extends Model
         return [
             'What kinds of job do young people in your country most want to do?',
             'Are there any jobs which young people do NOT want to do?',
-            'Who should give young people advice about which job to do CHOOSE?',
+            'Who should give young people advice about which job to do choose?',
             'Are young people more interested in getting a job they enjoy or earning a high salary?',
-            'At what age do people in your country generally retire? STOP WORKING',
+            'At what age do people in your country generally retire? Stop Working?',
             'Do most people receive a pension from their workplace or from the government?',
             'Should old people be allowed to continue working as long as they want to?',
             'What are some of the problems which might arise if older people continue working after retirement age?',

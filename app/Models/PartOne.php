@@ -140,7 +140,7 @@ class PartOne extends Model
             'Why do you think people like to visit famous places?',
             'Are there any disadvantages of living in a famous place?',
             'Is it important to take care of old buildings and historical sites?',
-            'Where do Thai people like to <s>visit</s> GO for a holiday?',
+            'Where do Thai people like to go for a holiday?',
             'When was the last time you went on holiday?',
             'Is it better to travel alone or with other people?',
             'What is the best holiday you have ever had?',

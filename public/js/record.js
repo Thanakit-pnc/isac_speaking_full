@@ -72,7 +72,6 @@ function startRecording(index) {
   indexBox = index
   fileName = `answer${index + 1}`
 }
-
 // Count Time
 function setTime() {
   totalTime--
