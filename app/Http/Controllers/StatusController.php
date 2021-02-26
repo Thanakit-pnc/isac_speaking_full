@@ -58,7 +58,9 @@ class StatusController extends Controller
 
     public function details($id) {
 
-        $speakings = Speaking::with('sound', 'student')->where('id', $id)->first();
+        $speakings = Speaking::with(['sound' => function($query) {
+            $query->orderBy('path', 'ASC');
+        }, 'student'])->where('id', $id)->first();
 
         if($speakings->part == 1) {
             $questions = PartOne::question($speakings->topic);

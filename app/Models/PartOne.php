@@ -129,7 +129,7 @@ class PartOne extends Model
             'Do you think you will spend more or less time on the internet in the future?',
             'Do you use many mobile apps?',
             'Which apps are most popular in your country?',
-            'What do people generally use apps for in your <s>country</s> THAILAND?',
+            'What do people generally use apps for in your Thailand?',
             'Would you like to create an app?',
         ];
     }
