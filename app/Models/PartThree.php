@@ -162,14 +162,52 @@ class PartThree extends Model
 
     public static function topic10() {
         return [
-            'Tell me about a famous place you have visited in your country.',
-            'Why do you think people like to visit famous places?',
-            'Are there any disadvantages of living in a famous place?',
-            'Is it important to take care of old buildings and historical sites?',
-            'Where do Thai people like to GO for a holiday?',
-            'When was the last time you went on holiday?',
-            'Is it better to travel alone or with other people?',
-            'What is the best holiday you have ever had?',
+            'On what occasions do people wear formal clothes in your country?',
+            'Is there a difference between the kinds of clothes younger people and older people wear?',
+            'Do students have to wear a uniform in your country?',
+            'To what extent does the climate, the weather, influence what we wear?',
+            'What kinds of jobs require employees to wear a uniform in your country?',
+            'Why do some employers want their staff to wear uniforms?',
+            'Should employees be able to choose the kind of uniform they wear?',
+            'Do you think wearing a uniform for work gives workers a sense of loyalty, or pride?',
         ];
     }
+
+    public static function topic11() {
+        return [
+            'At what age should children start school?',
+            'What kinds of things can children learn before they start school, say from their parents?',
+            'How important is playing in order to learn new skills?',
+            'What kinds of things can children learn from other children?',
+            'How important is it for adults to continue learning new skills after they leave school?',
+            'How can adults learn new skills after they have left school?',
+            'Is it easier for adults to learn new skills than it is for children?',
+            'Is it more important to have practical skills, or academic qualifications?',
+        ];
+    }
+    public static function topic12() {
+        return [
+            'What’s the difference between famous people in the past and famous people nowadays?',
+            'Why do you think some people want to become famous?',
+            'Why do some people stay famous for a long time while others do not?',
+            'Are there any disadvantages of being a celebrity?',
+            'In what ways can famous people have a positive impact on society?',
+            'Do you think celebrities should behave in different ways from people who aren’t famous?',
+            'Do celebrities sometimes have a negative impact on young people?',
+            'Why do you think normal people are so interested in celebrities?',
+        ];
+    }
+    public static function topic13() {
+        return [
+            'Why do you think some people lead an unhealthy lifestyle?',
+            'Which is healthier: living in the city or living in the countryside?',
+            'Do you think physical activity is the most important thing for people to stay fit and healthy?',
+            'Should healthcare be free for everyone in your country?',
+            'What can schools do to educate people about healthy living?',
+            'What should the government do to encourage people to live a healthy lifestyle?',
+            'To what extent should the individual be responsible for their own health?',
+            'How important is it for everyone to get vaccinated against diseases?',
+        ];
+    }
+    
 }

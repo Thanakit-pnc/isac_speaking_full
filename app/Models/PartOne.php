@@ -162,14 +162,53 @@ class PartOne extends Model
 
     public static function topic10() {
         return [
-            'Tell me about a famous place you have visited in your country.',
-            'Why do you think people like to visit famous places?',
-            'Are there any disadvantages of living in a famous place?',
-            'Is it important to take care of old buildings and historical sites?',
-            'Where do Thai people like to GO for a holiday?',
-            'When was the last time you went on holiday?',
-            'Is it better to travel alone or with other people?',
-            'What is the best holiday you have ever had?',
+            'How often do you wear jeans?',
+            'Did you wear jeans at school?',
+            'Would you spend a lot of money on jeans?',
+            'Why do you think jeans are so popular around the world?',
+            'Are designer brand clothes popular in Thailand?',
+            'Why are people willing to pay a lot of money for designer brand clothes?',
+            'Do higher prices always mean better quality?',
+            'Should people who sell fake designer brands be punished?',
+        ];
+    }
+
+    public static function topic11() {
+        return [
+            'Tell me about the first school you went to.',
+            'Did you enjoy going to this school?',
+            'What was your favourite subject at secondary or high school?',
+            'Do you still keep in touch with your friends from school?',
+            'Did you have a favourite teacher at school?',
+            'What was special about this teacher?',
+            'Are teachers in your country strict?',
+            'Would you like to be a teacher?',
+        ];
+    }
+
+    public static function topic12() {
+        return [
+            'Have you ever met a famous person?',
+            'What kinds of people are famous in your country?',
+            'If you could, which famous person would you like to interview?',
+            'Would you like to be a famous person?',
+            'Which celebrity has had a big impact on your life?',
+            'Why has this famous person influenced your life?',
+            'If you could, would you like to meet this famous person in real life?',
+            'Are you generally interested in celebrities?',
+        ];
+    }
+
+    public static function topic13() {
+        return [
+            'How often do you do physical exercise?',
+            'Do most people in your country get enough exercise?',
+            'Apart from doing exercise, what else do you do to stay healthy?',
+            'Would you say people in your country have a healthy lifestyle?',
+            'How much sleep do you think you need every night?',
+            'Is it a good idea to have a short sleep during the day?',
+            'Does reading in bed help you to fall asleep?',
+            'How do you feel the next day if you don’t get enough sleep?',
         ];
     }
 }

@@ -37,9 +37,9 @@
                 <div class="tab-pane fade active show" id="part1">
                     <h4>Please select a set</h4>
                     <p class="text-muted">Each topic will deduct one point from your account</p>
-                    @for ($i = 1; $i <= 10; $i++) 
+                    @for ($i = 1; $i <= 13; $i++) 
                         <a href="{{ route('part', ['part' => '1', 'set' => 'set'.$i]) }}"
-                        class="btn btn-bordered-primary m-1{{ $i > 9 ? ' disabled' : ''}}">Set
+                        class="btn btn-bordered-primary m-1">Set
                         {{ $i < 10 ? '0'.$i : $i }}</a>
                     @endfor
                 </div>
@@ -55,9 +55,9 @@
                     <h4>Please select a topic</h4>
                     <p class="text-muted">Each topic will deduct one point from your account</p>
                     <div class="row">
-                        @for ($i = 1; $i <= 10; $i++) 
+                        @for ($i = 1; $i <= 13; $i++) 
                             <div class="col-sm-4 col-lg-3">
-                                <a href="{{ route('part', ['part' => '3', 'set' => 'set'.$i]) }}" class="btn btn-bordered-primary m-1{{ $i > 9 ? ' disabled' : ''}} w-100">{{ \App\Models\Set::setName($i) }}</a>
+                                <a href="{{ route('part', ['part' => '3', 'set' => 'set'.$i]) }}" class="btn btn-bordered-primary m-1 w-100">{{ \App\Models\Set::setName($i) }}</a>
                             </div>
                         @endfor
                     </div>

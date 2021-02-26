@@ -39,6 +39,15 @@ class Set extends Model
             case "10":
                 $set = 'Clothes';
                 break;
+            case "11":
+                $set = 'Education';
+                break;
+            case "12":
+                $set = 'Famous People';
+                break;
+            case "13":
+                $set = 'Healthcare';
+                break;
         }
 
         return $set;
