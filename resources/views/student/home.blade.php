@@ -39,7 +39,7 @@
                     <p class="text-muted">Each topic will deduct one point from your account</p>
                     @for ($i = 1; $i <= 10; $i++) 
                         <a href="{{ route('part', ['part' => '1', 'set' => 'set'.$i]) }}"
-                        type="button" class="btn btn-primary waves-effect waves-light m-1 {{ $i > 9 ? 'disabled' : ''}}">Set
+                        type="button" class="btn btn-bordered-primary m-1 {{ $i > 9 ? 'disabled' : ''}}">Set
                         {{ $i < 10 ? '0'.$i : $i }}</a>
                     @endfor
                 </div>
@@ -48,14 +48,14 @@
                     <p class="text-muted">Each topic will deduct one point from your account</p>
 
                     @for ($i = 1; $i <= 40; $i++) 
-                        <a href="{{ route('part2.intro', ['number' => $i]) }}" type="button" class="btn btn-bordered-primary waves-effect waves-light m-1">Topic {{ $i < 10 ? '0'.$i : $i }}</a>
+                        <a href="{{ route('part2.intro', ['number' => $i]) }}" type="button" class="btn btn-bordered-primary m-1">Topic {{ $i < 10 ? '0'.$i : $i }}</a>
                      @endfor
                 </div>
                 <div class="tab-pane fade" id="part3">
                     <h4>Please select a topic</h4>
                     <p class="text-muted">Each topic will deduct one point from your account</p>
                     @for ($i = 1; $i <= 10; $i++) 
-                        <a href="{{ route('part', ['part' => '3', 'set' => 'set'.$i]) }}" type="button" class="btn btn-bordered-primary waves-effect waves-light m-1 {{ $i > 9 ? 'disabled' : ''}}">Set {{ $i < 10 ? '0'.$i : $i }}</a>
+                        <a href="{{ route('part', ['part' => '3', 'set' => 'set'.$i]) }}" type="button" class="btn btn-bordered-primary m-1 {{ $i > 9 ? 'disabled' : ''}}">Set {{ $i < 10 ? '0'.$i : $i }}</a>
                     @endfor
                 </div>
             </div>
