@@ -39,7 +39,7 @@
                     <p class="text-muted">Each topic will deduct one point from your account</p>
                     @for ($i = 1; $i <= 10; $i++) 
                         <a href="{{ route('part', ['part' => '1', 'set' => 'set'.$i]) }}"
-                        type="button" class="btn btn-bordered-primary waves-effect waves-light m-1 {{ $i > 9 ? 'disabled' : ''}}">Set
+                        type="button" class="btn btn-primary waves-effect waves-light m-1 {{ $i > 9 ? 'disabled' : ''}}">Set
                         {{ $i < 10 ? '0'.$i : $i }}</a>
                     @endfor
                 </div>
