@@ -44,6 +44,18 @@ function startRecording(index) {
 				</button>`)
         $('.record').attr('disabled', true)
       },
+      onEncodingProgress: function (recorder, progress) {
+        if (progress === 1) {
+          $(recordBox).eq(indexBox).find('.loading').remove()
+          $('.record').attr('disabled', false)
+        }
+      },
+      onTimeout: function (recorder) {
+        recorder.finishRecording()
+        stopTime()
+        $(recordBox).eq(indexBox).find('.loading').text('Process...')
+        totalTime = timeCount
+      },
     })
 
     recorder.setOptions({
@@ -56,17 +68,18 @@ function startRecording(index) {
     })
 
     recorder.onComplete = function (recorder, blob) {
-      $('.record').attr('disabled', false)
-      $(recordBox).eq(indexBox).find('.loading').remove()
-      totalTime = timeCount
       createDownloadLink(blob, recorder.encoding)
     }
 
     recorder.onError = function (recorder, msg) {
       console.log(msg)
     }
-    startTime()
+
     recorder.startRecording()
+
+    if (recorder.isRecording()) {
+      startTime()
+    }
   })
 
   indexBox = index
