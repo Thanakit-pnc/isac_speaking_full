@@ -40,9 +40,7 @@ class SpeakingController extends Controller
     }
 
     public function store(Request $request) {
-
-        dd($request->all());
-
+        
         $sounds = $request->file('audio_data');
 
         $folder = auth('student')->user()->std_id.'/part'.$request->part.'/'.$request->set.date('_dmYHis');
