@@ -84,7 +84,7 @@
     @endslot
 
     @slot('textBtn')
-        Play
+        Start
     @endslot
 
     @slot('path')

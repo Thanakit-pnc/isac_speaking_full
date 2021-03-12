@@ -22,6 +22,11 @@
                 <div class="progress-bar bg-success" role="progressbar"></div>
             </div>
 
+            <div class="mt-2 border-top border-primary bg-white p-2 d-none" style="border-width: 2px !important;">
+                <h3 class="mt-0 mb-3">Play</h3>
+                <div id="audio-container"></div>
+            </div>
+            
             <div class="text-center">
                 <button class="btn btn-primary btn-sm width-lg d-none" type="button" disabled="" id="loading">
                     <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span>
@@ -37,10 +42,6 @@
                 <p>This process may take several seconds to a few minutes</p>
             </div>
 
-            <div class="mt-2 border-top border-primary bg-white p-2 d-none" style="border-width: 2px !important;">
-                <h3 class="mt-0 mb-3">Sound Record</h3>
-                <div id="audio-container"></div>
-            </div>
         </div>
     </div>
 @endsection
